@@ -1,0 +1,3006 @@
+{
+ "seed": 20261005,
+ "n_sites": 667,
+ "mutants": [
+  {
+   "id": "m000",
+   "file": "bmp3.c",
+   "start": 28609,
+   "end": 28610,
+   "line": 741,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m001",
+   "file": "bmp3.c",
+   "start": 28756,
+   "end": 28758,
+   "line": 747,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m002",
+   "file": "bmp3.c",
+   "start": 28857,
+   "end": 28859,
+   "line": 750,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m003",
+   "file": "bmp3.c",
+   "start": 28979,
+   "end": 28980,
+   "line": 753,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m004",
+   "file": "bmp3.c",
+   "start": 29252,
+   "end": 29253,
+   "line": 763,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m005",
+   "file": "bmp3.c",
+   "start": 29425,
+   "end": 29427,
+   "line": 769,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m006",
+   "file": "bmp3.c",
+   "start": 29454,
+   "end": 29456,
+   "line": 769,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m007",
+   "file": "bmp3.c",
+   "start": 29638,
+   "end": 29640,
+   "line": 775,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m008",
+   "file": "bmp3.c",
+   "start": 30292,
+   "end": 30294,
+   "line": 803,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m009",
+   "file": "bmp3.c",
+   "start": 30317,
+   "end": 30319,
+   "line": 803,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m010",
+   "file": "bmp3.c",
+   "start": 30365,
+   "end": 30366,
+   "line": 805,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m011",
+   "file": "bmp3.c",
+   "start": 30728,
+   "end": 30729,
+   "line": 815,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m012",
+   "file": "bmp3.c",
+   "start": 30809,
+   "end": 30810,
+   "line": 817,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m013",
+   "file": "bmp3.c",
+   "start": 31080,
+   "end": 31082,
+   "line": 827,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m014",
+   "file": "bmp3.c",
+   "start": 31704,
+   "end": 31706,
+   "line": 855,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m015",
+   "file": "bmp3.c",
+   "start": 31713,
+   "end": 31715,
+   "line": 855,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m016",
+   "file": "bmp3.c",
+   "start": 31810,
+   "end": 31811,
+   "line": 859,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m017",
+   "file": "bmp3.c",
+   "start": 31888,
+   "end": 31890,
+   "line": 862,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m018",
+   "file": "bmp3.c",
+   "start": 32397,
+   "end": 32398,
+   "line": 876,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m019",
+   "file": "bmp3.c",
+   "start": 32541,
+   "end": 32542,
+   "line": 883,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m020",
+   "file": "bmp3.c",
+   "start": 32662,
+   "end": 32664,
+   "line": 886,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m021",
+   "file": "bmp3.c",
+   "start": 33230,
+   "end": 33232,
+   "line": 913,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m022",
+   "file": "bmp3.c",
+   "start": 35468,
+   "end": 35470,
+   "line": 992,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m023",
+   "file": "bmp3.c",
+   "start": 36733,
+   "end": 36735,
+   "line": 1033,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m024",
+   "file": "bmp3.c",
+   "start": 37321,
+   "end": 37323,
+   "line": 1058,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m025",
+   "file": "bmp3.c",
+   "start": 37503,
+   "end": 37505,
+   "line": 1065,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m026",
+   "file": "bmp3.c",
+   "start": 37636,
+   "end": 37638,
+   "line": 1068,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m027",
+   "file": "bmp3.c",
+   "start": 37695,
+   "end": 37696,
+   "line": 1070,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m028",
+   "file": "bmp3.c",
+   "start": 38477,
+   "end": 38478,
+   "line": 1098,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m029",
+   "file": "bmp3.c",
+   "start": 38521,
+   "end": 38522,
+   "line": 1098,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m030",
+   "file": "bmp3.c",
+   "start": 38578,
+   "end": 38580,
+   "line": 1101,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m031",
+   "file": "bmp3.c",
+   "start": 38596,
+   "end": 38598,
+   "line": 1101,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m032",
+   "file": "bmp3.c",
+   "start": 38707,
+   "end": 38709,
+   "line": 1105,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m033",
+   "file": "bmp3.c",
+   "start": 38805,
+   "end": 38806,
+   "line": 1108,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m034",
+   "file": "bmp3.c",
+   "start": 38840,
+   "end": 38844,
+   "line": 1108,
+   "cls": "CONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m035",
+   "file": "bmp3.c",
+   "start": 38899,
+   "end": 38900,
+   "line": 1109,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m036",
+   "file": "bmp3.c",
+   "start": 39403,
+   "end": 39404,
+   "line": 1132,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "1"
+  },
+  {
+   "id": "m037",
+   "file": "bmp3.c",
+   "start": 39429,
+   "end": 39431,
+   "line": 1133,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m038",
+   "file": "bmp3.c",
+   "start": 39490,
+   "end": 39491,
+   "line": 1135,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m039",
+   "file": "bmp3.c",
+   "start": 39910,
+   "end": 39911,
+   "line": 1154,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m040",
+   "file": "bmp3.c",
+   "start": 40063,
+   "end": 40065,
+   "line": 1160,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m041",
+   "file": "bmp3.c",
+   "start": 40455,
+   "end": 40457,
+   "line": 1170,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m042",
+   "file": "bmp3.c",
+   "start": 40755,
+   "end": 40757,
+   "line": 1178,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m043",
+   "file": "bmp3.c",
+   "start": 40758,
+   "end": 40759,
+   "line": 1178,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m044",
+   "file": "bmp3.c",
+   "start": 41509,
+   "end": 41511,
+   "line": 1208,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m045",
+   "file": "bmp3.c",
+   "start": 41652,
+   "end": 41654,
+   "line": 1213,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m046",
+   "file": "bmp3.c",
+   "start": 42214,
+   "end": 42215,
+   "line": 1239,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m047",
+   "file": "bmp3.c",
+   "start": 42239,
+   "end": 42241,
+   "line": 1241,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m048",
+   "file": "bmp3.c",
+   "start": 42315,
+   "end": 42316,
+   "line": 1243,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m049",
+   "file": "bmp3.c",
+   "start": 42524,
+   "end": 42525,
+   "line": 1249,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m050",
+   "file": "bmp3.c",
+   "start": 43034,
+   "end": 43035,
+   "line": 1274,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m051",
+   "file": "bmp3.c",
+   "start": 43116,
+   "end": 43117,
+   "line": 1277,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m052",
+   "file": "bmp3.c",
+   "start": 43433,
+   "end": 43437,
+   "line": 1286,
+   "cls": "CONST",
+   "orig": "2000",
+   "repl": "1999"
+  },
+  {
+   "id": "m053",
+   "file": "bmp3.c",
+   "start": 43568,
+   "end": 43569,
+   "line": 1289,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m054",
+   "file": "bmp3.c",
+   "start": 43684,
+   "end": 43686,
+   "line": 1292,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m055",
+   "file": "bmp3.c",
+   "start": 44347,
+   "end": 44348,
+   "line": 1320,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m056",
+   "file": "bmp3.c",
+   "start": 44372,
+   "end": 44374,
+   "line": 1320,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m057",
+   "file": "bmp3.c",
+   "start": 44505,
+   "end": 44506,
+   "line": 1323,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m058",
+   "file": "bmp3.c",
+   "start": 44801,
+   "end": 44802,
+   "line": 1332,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m059",
+   "file": "bmp3.c",
+   "start": 44908,
+   "end": 44910,
+   "line": 1335,
+   "cls": "LOGICAL",
+   "orig": "||",
+   "repl": "&&"
+  },
+  {
+   "id": "m060",
+   "file": "bmp3.c",
+   "start": 45425,
+   "end": 45427,
+   "line": 1358,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m061",
+   "file": "bmp3.c",
+   "start": 45438,
+   "end": 45440,
+   "line": 1358,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m062",
+   "file": "bmp3.c",
+   "start": 46057,
+   "end": 46059,
+   "line": 1377,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m063",
+   "file": "bmp3.c",
+   "start": 46329,
+   "end": 46331,
+   "line": 1385,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m064",
+   "file": "bmp3.c",
+   "start": 46724,
+   "end": 46726,
+   "line": 1407,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m065",
+   "file": "bmp3.c",
+   "start": 46839,
+   "end": 46840,
+   "line": 1410,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m066",
+   "file": "bmp3.c",
+   "start": 47483,
+   "end": 47484,
+   "line": 1434,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m067",
+   "file": "bmp3.c",
+   "start": 47532,
+   "end": 47533,
+   "line": 1435,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m068",
+   "file": "bmp3.c",
+   "start": 47556,
+   "end": 47558,
+   "line": 1437,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m069",
+   "file": "bmp3.c",
+   "start": 47737,
+   "end": 47739,
+   "line": 1442,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m070",
+   "file": "bmp3.c",
+   "start": 48658,
+   "end": 48659,
+   "line": 1472,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m071",
+   "file": "bmp3.c",
+   "start": 48682,
+   "end": 48684,
+   "line": 1472,
+   "cls": "ROR",
+   "orig": "<=",
+   "repl": "<"
+  },
+  {
+   "id": "m072",
+   "file": "bmp3.c",
+   "start": 49862,
+   "end": 49863,
+   "line": 1513,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m073",
+   "file": "bmp3.c",
+   "start": 50090,
+   "end": 50091,
+   "line": 1522,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m074",
+   "file": "bmp3.c",
+   "start": 50116,
+   "end": 50117,
+   "line": 1523,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m075",
+   "file": "bmp3.c",
+   "start": 50151,
+   "end": 50152,
+   "line": 1524,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m076",
+   "file": "bmp3.c",
+   "start": 50879,
+   "end": 50880,
+   "line": 1544,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m077",
+   "file": "bmp3.c",
+   "start": 50881,
+   "end": 50882,
+   "line": 1544,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m078",
+   "file": "bmp3.c",
+   "start": 51093,
+   "end": 51094,
+   "line": 1549,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m079",
+   "file": "bmp3.c",
+   "start": 51303,
+   "end": 51304,
+   "line": 1554,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m080",
+   "file": "bmp3.c",
+   "start": 51607,
+   "end": 51608,
+   "line": 1562,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m081",
+   "file": "bmp3.c",
+   "start": 51609,
+   "end": 51610,
+   "line": 1562,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m082",
+   "file": "bmp3.c",
+   "start": 51698,
+   "end": 51699,
+   "line": 1565,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m083",
+   "file": "bmp3.c",
+   "start": 51739,
+   "end": 51740,
+   "line": 1566,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m084",
+   "file": "bmp3.c",
+   "start": 52484,
+   "end": 52485,
+   "line": 1589,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m085",
+   "file": "bmp3.c",
+   "start": 53285,
+   "end": 53286,
+   "line": 1609,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m086",
+   "file": "bmp3.c",
+   "start": 53690,
+   "end": 53692,
+   "line": 1620,
+   "cls": "SHIFT",
+   "orig": "<<",
+   "repl": ">>"
+  },
+  {
+   "id": "m087",
+   "file": "bmp3.c",
+   "start": 53746,
+   "end": 53747,
+   "line": 1621,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m088",
+   "file": "bmp3.c",
+   "start": 53753,
+   "end": 53755,
+   "line": 1621,
+   "cls": "CONST",
+   "orig": "16",
+   "repl": "17"
+  },
+  {
+   "id": "m089",
+   "file": "bmp3.c",
+   "start": 53781,
+   "end": 53782,
+   "line": 1623,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m090",
+   "file": "bmp3.c",
+   "start": 54428,
+   "end": 54430,
+   "line": 1641,
+   "cls": "SHIFT",
+   "orig": "<<",
+   "repl": ">>"
+  },
+  {
+   "id": "m091",
+   "file": "bmp3.c",
+   "start": 54431,
+   "end": 54432,
+   "line": 1641,
+   "cls": "CONST",
+   "orig": "8",
+   "repl": "9"
+  },
+  {
+   "id": "m092",
+   "file": "bmp3.c",
+   "start": 54770,
+   "end": 54771,
+   "line": 1653,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m093",
+   "file": "bmp3.c",
+   "start": 54781,
+   "end": 54782,
+   "line": 1653,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m094",
+   "file": "bmp3.c",
+   "start": 54821,
+   "end": 54823,
+   "line": 1656,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m095",
+   "file": "bmp3.c",
+   "start": 54904,
+   "end": 54905,
+   "line": 1658,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m096",
+   "file": "bmp3.c",
+   "start": 55073,
+   "end": 55075,
+   "line": 1662,
+   "cls": "SHIFT",
+   "orig": "<<",
+   "repl": ">>"
+  },
+  {
+   "id": "m097",
+   "file": "bmp3.c",
+   "start": 55076,
+   "end": 55077,
+   "line": 1662,
+   "cls": "CONST",
+   "orig": "8",
+   "repl": "9"
+  },
+  {
+   "id": "m098",
+   "file": "bmp3.c",
+   "start": 55171,
+   "end": 55172,
+   "line": 1664,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m099",
+   "file": "bmp3.c",
+   "start": 56080,
+   "end": 56081,
+   "line": 1696,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m100",
+   "file": "bmp3.c",
+   "start": 56224,
+   "end": 56225,
+   "line": 1701,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m101",
+   "file": "bmp3.c",
+   "start": 57583,
+   "end": 57585,
+   "line": 1753,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m102",
+   "file": "bmp3.c",
+   "start": 57811,
+   "end": 57812,
+   "line": 1759,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m103",
+   "file": "bmp3.c",
+   "start": 58568,
+   "end": 58569,
+   "line": 1792,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m104",
+   "file": "bmp3.c",
+   "start": 59676,
+   "end": 59677,
+   "line": 1826,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m105",
+   "file": "bmp3.c",
+   "start": 61592,
+   "end": 61593,
+   "line": 1872,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m106",
+   "file": "bmp3.c",
+   "start": 63543,
+   "end": 63544,
+   "line": 1933,
+   "cls": "CONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m107",
+   "file": "bmp3.c",
+   "start": 63623,
+   "end": 63624,
+   "line": 1936,
+   "cls": "CONST",
+   "orig": "4",
+   "repl": "5"
+  },
+  {
+   "id": "m108",
+   "file": "bmp3.c",
+   "start": 63645,
+   "end": 63646,
+   "line": 1937,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m109",
+   "file": "bmp3.c",
+   "start": 63721,
+   "end": 63723,
+   "line": 1941,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m110",
+   "file": "bmp3.c",
+   "start": 63791,
+   "end": 63792,
+   "line": 1943,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m111",
+   "file": "bmp3.c",
+   "start": 64629,
+   "end": 64631,
+   "line": 1964,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m112",
+   "file": "bmp3.c",
+   "start": 64836,
+   "end": 64838,
+   "line": 1971,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m113",
+   "file": "bmp3.c",
+   "start": 65629,
+   "end": 65630,
+   "line": 1997,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m114",
+   "file": "bmp3.c",
+   "start": 65652,
+   "end": 65654,
+   "line": 1999,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m115",
+   "file": "bmp3.c",
+   "start": 65747,
+   "end": 65748,
+   "line": 2003,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m116",
+   "file": "bmp3.c",
+   "start": 65976,
+   "end": 65977,
+   "line": 2009,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m117",
+   "file": "bmp3.c",
+   "start": 66175,
+   "end": 66176,
+   "line": 2015,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m118",
+   "file": "bmp3.c",
+   "start": 66606,
+   "end": 66607,
+   "line": 2027,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m119",
+   "file": "bmp3.c",
+   "start": 67182,
+   "end": 67184,
+   "line": 2048,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m120",
+   "file": "bmp3.c",
+   "start": 67444,
+   "end": 67445,
+   "line": 2056,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m121",
+   "file": "bmp3.c",
+   "start": 67680,
+   "end": 67681,
+   "line": 2062,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m122",
+   "file": "bmp3.c",
+   "start": 68619,
+   "end": 68622,
+   "line": 2097,
+   "cls": "CONST",
+   "orig": "234",
+   "repl": "235"
+  },
+  {
+   "id": "m123",
+   "file": "bmp3.c",
+   "start": 68749,
+   "end": 68753,
+   "line": 2102,
+   "cls": "CONST",
+   "orig": "5000",
+   "repl": "5001"
+  },
+  {
+   "id": "m124",
+   "file": "bmp3.c",
+   "start": 68769,
+   "end": 68774,
+   "line": 2102,
+   "cls": "CONST",
+   "orig": "40000",
+   "repl": "40001"
+  },
+  {
+   "id": "m125",
+   "file": "bmp3.c",
+   "start": 68776,
+   "end": 68781,
+   "line": 2102,
+   "cls": "CONST",
+   "orig": "80000",
+   "repl": "80001"
+  },
+  {
+   "id": "m126",
+   "file": "bmp3.c",
+   "start": 68799,
+   "end": 68805,
+   "line": 2102,
+   "cls": "CONST",
+   "orig": "640000",
+   "repl": "640001"
+  },
+  {
+   "id": "m127",
+   "file": "bmp3.c",
+   "start": 68807,
+   "end": 68814,
+   "line": 2102,
+   "cls": "CONST",
+   "orig": "1280000",
+   "repl": "1280001"
+  },
+  {
+   "id": "m128",
+   "file": "bmp3.c",
+   "start": 68825,
+   "end": 68832,
+   "line": 2102,
+   "cls": "CONST",
+   "orig": "5120000",
+   "repl": "5119999"
+  },
+  {
+   "id": "m129",
+   "file": "bmp3.c",
+   "start": 68862,
+   "end": 68870,
+   "line": 2103,
+   "cls": "CONST",
+   "orig": "40960000",
+   "repl": "40960001"
+  },
+  {
+   "id": "m130",
+   "file": "bmp3.c",
+   "start": 68893,
+   "end": 68902,
+   "line": 2103,
+   "cls": "CONST",
+   "orig": "327680000",
+   "repl": "327679999"
+  },
+  {
+   "id": "m131",
+   "file": "bmp3.c",
+   "start": 70562,
+   "end": 70563,
+   "line": 2166,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m132",
+   "file": "bmp3.c",
+   "start": 71215,
+   "end": 71216,
+   "line": 2189,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m133",
+   "file": "bmp3.c",
+   "start": 71815,
+   "end": 71816,
+   "line": 2207,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m134",
+   "file": "bmp3.c",
+   "start": 71923,
+   "end": 71924,
+   "line": 2210,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m135",
+   "file": "bmp3.c",
+   "start": 72431,
+   "end": 72432,
+   "line": 2222,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m136",
+   "file": "bmp3.c",
+   "start": 72996,
+   "end": 72997,
+   "line": 2240,
+   "cls": "ROR",
+   "orig": ">",
+   "repl": ">="
+  },
+  {
+   "id": "m137",
+   "file": "bmp3.c",
+   "start": 73759,
+   "end": 73760,
+   "line": 2262,
+   "cls": "CONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m138",
+   "file": "bmp3.c",
+   "start": 74435,
+   "end": 74436,
+   "line": 2282,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m139",
+   "file": "bmp3.c",
+   "start": 74438,
+   "end": 74440,
+   "line": 2282,
+   "cls": "SHIFT",
+   "orig": "<<",
+   "repl": ">>"
+  },
+  {
+   "id": "m140",
+   "file": "bmp3.c",
+   "start": 74441,
+   "end": 74442,
+   "line": 2282,
+   "cls": "CONST",
+   "orig": "8",
+   "repl": "9"
+  },
+  {
+   "id": "m141",
+   "file": "bmp3.c",
+   "start": 74478,
+   "end": 74479,
+   "line": 2283,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m142",
+   "file": "bmp3.c",
+   "start": 74481,
+   "end": 74483,
+   "line": 2283,
+   "cls": "SHIFT",
+   "orig": "<<",
+   "repl": ">>"
+  },
+  {
+   "id": "m143",
+   "file": "bmp3.c",
+   "start": 74484,
+   "end": 74486,
+   "line": 2283,
+   "cls": "CONST",
+   "orig": "16",
+   "repl": "17"
+  },
+  {
+   "id": "m144",
+   "file": "bmp3.c",
+   "start": 74525,
+   "end": 74526,
+   "line": 2284,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m145",
+   "file": "bmp3.c",
+   "start": 74690,
+   "end": 74692,
+   "line": 2288,
+   "cls": "SHIFT",
+   "orig": "<<",
+   "repl": ">>"
+  },
+  {
+   "id": "m146",
+   "file": "bmp3.c",
+   "start": 74730,
+   "end": 74731,
+   "line": 2289,
+   "cls": "CONST",
+   "orig": "5",
+   "repl": "4"
+  },
+  {
+   "id": "m147",
+   "file": "bmp3.c",
+   "start": 74733,
+   "end": 74735,
+   "line": 2289,
+   "cls": "SHIFT",
+   "orig": "<<",
+   "repl": ">>"
+  },
+  {
+   "id": "m148",
+   "file": "bmp3.c",
+   "start": 74791,
+   "end": 74792,
+   "line": 2290,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m149",
+   "file": "bmp3.c",
+   "start": 75295,
+   "end": 75297,
+   "line": 2304,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m150",
+   "file": "bmp3.c",
+   "start": 75883,
+   "end": 75885,
+   "line": 2319,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m151",
+   "file": "bmp3.c",
+   "start": 76053,
+   "end": 76055,
+   "line": 2324,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m152",
+   "file": "bmp3.c",
+   "start": 76610,
+   "end": 76611,
+   "line": 2335,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m153",
+   "file": "bmp3.c",
+   "start": 76787,
+   "end": 76789,
+   "line": 2340,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m154",
+   "file": "bmp3.c",
+   "start": 77132,
+   "end": 77133,
+   "line": 2349,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m155",
+   "file": "bmp3.c",
+   "start": 77242,
+   "end": 77243,
+   "line": 2354,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m156",
+   "file": "bmp3.c",
+   "start": 78156,
+   "end": 78169,
+   "line": 2385,
+   "cls": "CONST",
+   "orig": "1073741824.0f",
+   "repl": "536870912.0f"
+  },
+  {
+   "id": "m157",
+   "file": "bmp3.c",
+   "start": 78316,
+   "end": 78334,
+   "line": 2388,
+   "cls": "CONST",
+   "orig": "281474976710656.0f",
+   "repl": "562949953421312.0f"
+  },
+  {
+   "id": "m158",
+   "file": "bmp3.c",
+   "start": 78494,
+   "end": 78495,
+   "line": 2390,
+   "cls": "CONST",
+   "orig": "5",
+   "repl": "4"
+  },
+  {
+   "id": "m159",
+   "file": "bmp3.c",
+   "start": 78594,
+   "end": 78595,
+   "line": 2392,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m160",
+   "file": "bmp3.c",
+   "start": 78597,
+   "end": 78602,
+   "line": 2392,
+   "cls": "CONST",
+   "orig": "16384",
+   "repl": "16385"
+  },
+  {
+   "id": "m161",
+   "file": "bmp3.c",
+   "start": 78696,
+   "end": 78697,
+   "line": 2393,
+   "cls": "CONST",
+   "orig": "7",
+   "repl": "6"
+  },
+  {
+   "id": "m162",
+   "file": "bmp3.c",
+   "start": 78798,
+   "end": 78799,
+   "line": 2395,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m163",
+   "file": "bmp3.c",
+   "start": 79028,
+   "end": 79030,
+   "line": 2399,
+   "cls": "CONST",
+   "orig": "10",
+   "repl": "9"
+  },
+  {
+   "id": "m164",
+   "file": "bmp3.c",
+   "start": 79215,
+   "end": 79217,
+   "line": 2402,
+   "cls": "CONST",
+   "orig": "11",
+   "repl": "12"
+  },
+  {
+   "id": "m165",
+   "file": "bmp3.c",
+   "start": 79567,
+   "end": 79569,
+   "line": 2410,
+   "cls": "CONST",
+   "orig": "15",
+   "repl": "14"
+  },
+  {
+   "id": "m166",
+   "file": "bmp3.c",
+   "start": 79721,
+   "end": 79723,
+   "line": 2413,
+   "cls": "CONST",
+   "orig": "16",
+   "repl": "17"
+  },
+  {
+   "id": "m167",
+   "file": "bmp3.c",
+   "start": 79896,
+   "end": 79898,
+   "line": 2416,
+   "cls": "CONST",
+   "orig": "18",
+   "repl": "19"
+  },
+  {
+   "id": "m168",
+   "file": "bmp3.c",
+   "start": 79931,
+   "end": 79949,
+   "line": 2417,
+   "cls": "CONST",
+   "orig": "281474976710656.0f",
+   "repl": "140737488355328.0f"
+  },
+  {
+   "id": "m169",
+   "file": "bmp3.c",
+   "start": 80078,
+   "end": 80080,
+   "line": 2419,
+   "cls": "CONST",
+   "orig": "19",
+   "repl": "18"
+  },
+  {
+   "id": "m170",
+   "file": "bmp3.c",
+   "start": 80098,
+   "end": 80116,
+   "line": 2420,
+   "cls": "CONST",
+   "orig": "281474976710656.0f",
+   "repl": "562949953421312.0f"
+  },
+  {
+   "id": "m171",
+   "file": "bmp3.c",
+   "start": 80267,
+   "end": 80290,
+   "line": 2423,
+   "cls": "CONST",
+   "orig": "36893488147419103232.0f",
+   "repl": "1.8446744073709552e+19f"
+  },
+  {
+   "id": "m172",
+   "file": "bmp3.c",
+   "start": 81013,
+   "end": 81014,
+   "line": 2442,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m173",
+   "file": "bmp3.c",
+   "start": 81321,
+   "end": 81322,
+   "line": 2447,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m174",
+   "file": "bmp3.c",
+   "start": 81533,
+   "end": 81534,
+   "line": 2451,
+   "cls": "ROR",
+   "orig": "<",
+   "repl": ">="
+  },
+  {
+   "id": "m175",
+   "file": "bmp3.c",
+   "start": 82931,
+   "end": 82932,
+   "line": 2492,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m176",
+   "file": "bmp3.c",
+   "start": 83024,
+   "end": 83025,
+   "line": 2493,
+   "cls": "CONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m177",
+   "file": "bmp3.c",
+   "start": 83076,
+   "end": 83077,
+   "line": 2494,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m178",
+   "file": "bmp3.c",
+   "start": 83092,
+   "end": 83093,
+   "line": 2494,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m179",
+   "file": "bmp3.c",
+   "start": 83387,
+   "end": 83388,
+   "line": 2497,
+   "cls": "CONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m180",
+   "file": "bmp3.c",
+   "start": 83515,
+   "end": 83516,
+   "line": 2499,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m181",
+   "file": "bmp3.c",
+   "start": 83593,
+   "end": 83594,
+   "line": 2500,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "1"
+  },
+  {
+   "id": "m182",
+   "file": "bmp3.c",
+   "start": 83902,
+   "end": 83903,
+   "line": 2504,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m183",
+   "file": "bmp3.c",
+   "start": 84435,
+   "end": 84436,
+   "line": 2529,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m184",
+   "file": "bmp3.c",
+   "start": 91734,
+   "end": 91736,
+   "line": 2728,
+   "cls": "LOGICAL",
+   "orig": "||",
+   "repl": "&&"
+  },
+  {
+   "id": "m185",
+   "file": "bmp3.c",
+   "start": 91749,
+   "end": 91751,
+   "line": 2728,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m186",
+   "file": "bmp3.c",
+   "start": 91785,
+   "end": 91787,
+   "line": 2728,
+   "cls": "LOGICAL",
+   "orig": "||",
+   "repl": "&&"
+  },
+  {
+   "id": "m187",
+   "file": "bmp3.c",
+   "start": 91811,
+   "end": 91813,
+   "line": 2729,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m188",
+   "file": "bmp3.c",
+   "start": 92438,
+   "end": 92439,
+   "line": 2751,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m189",
+   "file": "bmp3.c",
+   "start": 92484,
+   "end": 92485,
+   "line": 2752,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m190",
+   "file": "bmp3.c",
+   "start": 94005,
+   "end": 94006,
+   "line": 2784,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m191",
+   "file": "bmp3.c",
+   "start": 94289,
+   "end": 94290,
+   "line": 2794,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m192",
+   "file": "bmp3.c",
+   "start": 94757,
+   "end": 94758,
+   "line": 2806,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m193",
+   "file": "bmp3.c",
+   "start": 95736,
+   "end": 95737,
+   "line": 2835,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m194",
+   "file": "bmp3.c",
+   "start": 96084,
+   "end": 96085,
+   "line": 2846,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m195",
+   "file": "bmp3.c",
+   "start": 96933,
+   "end": 96935,
+   "line": 2873,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m196",
+   "file": "bmp3.c",
+   "start": 96980,
+   "end": 96981,
+   "line": 2875,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m197",
+   "file": "bmp3.c",
+   "start": 97920,
+   "end": 97921,
+   "line": 2905,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m198",
+   "file": "bmp3.c",
+   "start": 98340,
+   "end": 98341,
+   "line": 2914,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m199",
+   "file": "bmp3.c",
+   "start": 98342,
+   "end": 98346,
+   "line": 2914,
+   "cls": "CONST",
+   "orig": "0x01",
+   "repl": "0x2"
+  },
+  {
+   "id": "m200",
+   "file": "bmp3.c",
+   "start": 99240,
+   "end": 99241,
+   "line": 2950,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m201",
+   "file": "bmp3.c",
+   "start": 99263,
+   "end": 99265,
+   "line": 2952,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m202",
+   "file": "bmp3_defs.h",
+   "start": 3786,
+   "end": 3790,
+   "line": 128,
+   "cls": "DEFCONST",
+   "orig": "0x76",
+   "repl": "0x77"
+  },
+  {
+   "id": "m203",
+   "file": "bmp3_defs.h",
+   "start": 3848,
+   "end": 3852,
+   "line": 129,
+   "cls": "DEFCONST",
+   "orig": "0x77",
+   "repl": "0x78"
+  },
+  {
+   "id": "m204",
+   "file": "bmp3_defs.h",
+   "start": 4508,
+   "end": 4512,
+   "line": 146,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x3"
+  },
+  {
+   "id": "m205",
+   "file": "bmp3_defs.h",
+   "start": 4570,
+   "end": 4574,
+   "line": 147,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x4"
+  },
+  {
+   "id": "m206",
+   "file": "bmp3_defs.h",
+   "start": 4694,
+   "end": 4698,
+   "line": 149,
+   "cls": "DEFCONST",
+   "orig": "0x10",
+   "repl": "0x11"
+  },
+  {
+   "id": "m207",
+   "file": "bmp3_defs.h",
+   "start": 4818,
+   "end": 4822,
+   "line": 151,
+   "cls": "DEFCONST",
+   "orig": "0x12",
+   "repl": "0x11"
+  },
+  {
+   "id": "m208",
+   "file": "bmp3_defs.h",
+   "start": 5438,
+   "end": 5442,
+   "line": 161,
+   "cls": "DEFCONST",
+   "orig": "0x1F",
+   "repl": "0x1e"
+  },
+  {
+   "id": "m209",
+   "file": "bmp3_defs.h",
+   "start": 5719,
+   "end": 5723,
+   "line": 167,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x1"
+  },
+  {
+   "id": "m210",
+   "file": "bmp3_defs.h",
+   "start": 5932,
+   "end": 5936,
+   "line": 172,
+   "cls": "DEFCONST",
+   "orig": "0x20",
+   "repl": "0x21"
+  },
+  {
+   "id": "m211",
+   "file": "bmp3_defs.h",
+   "start": 5994,
+   "end": 5998,
+   "line": 173,
+   "cls": "DEFCONST",
+   "orig": "0x40",
+   "repl": "0x41"
+  },
+  {
+   "id": "m212",
+   "file": "bmp3_defs.h",
+   "start": 6149,
+   "end": 6153,
+   "line": 177,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m213",
+   "file": "bmp3_defs.h",
+   "start": 6331,
+   "end": 6335,
+   "line": 182,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x2"
+  },
+  {
+   "id": "m214",
+   "file": "bmp3_defs.h",
+   "start": 6526,
+   "end": 6530,
+   "line": 187,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m215",
+   "file": "bmp3_defs.h",
+   "start": 6588,
+   "end": 6592,
+   "line": 188,
+   "cls": "DEFCONST",
+   "orig": "0x00",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m216",
+   "file": "bmp3_defs.h",
+   "start": 6731,
+   "end": 6735,
+   "line": 192,
+   "cls": "DEFCONST",
+   "orig": "0x00",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m217",
+   "file": "bmp3_defs.h",
+   "start": 6812,
+   "end": 6816,
+   "line": 195,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m218",
+   "file": "bmp3_defs.h",
+   "start": 7016,
+   "end": 7020,
+   "line": 200,
+   "cls": "DEFCONST",
+   "orig": "0x00",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m219",
+   "file": "bmp3_defs.h",
+   "start": 7078,
+   "end": 7082,
+   "line": 201,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m220",
+   "file": "bmp3_defs.h",
+   "start": 7178,
+   "end": 7182,
+   "line": 204,
+   "cls": "DEFCONST",
+   "orig": "0x00",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m221",
+   "file": "bmp3_defs.h",
+   "start": 7426,
+   "end": 7430,
+   "line": 208,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x5"
+  },
+  {
+   "id": "m222",
+   "file": "bmp3_defs.h",
+   "start": 7770,
+   "end": 7774,
+   "line": 215,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m223",
+   "file": "bmp3_defs.h",
+   "start": 7956,
+   "end": 7960,
+   "line": 218,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x5"
+  },
+  {
+   "id": "m224",
+   "file": "bmp3_defs.h",
+   "start": 8018,
+   "end": 8022,
+   "line": 219,
+   "cls": "DEFCONST",
+   "orig": "0x05",
+   "repl": "0x4"
+  },
+  {
+   "id": "m225",
+   "file": "bmp3_defs.h",
+   "start": 8177,
+   "end": 8181,
+   "line": 223,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x2"
+  },
+  {
+   "id": "m226",
+   "file": "bmp3_defs.h",
+   "start": 8239,
+   "end": 8243,
+   "line": 224,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x3"
+  },
+  {
+   "id": "m227",
+   "file": "bmp3_defs.h",
+   "start": 8363,
+   "end": 8367,
+   "line": 226,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x5"
+  },
+  {
+   "id": "m228",
+   "file": "bmp3_defs.h",
+   "start": 8425,
+   "end": 8429,
+   "line": 227,
+   "cls": "DEFCONST",
+   "orig": "0x05",
+   "repl": "0x6"
+  },
+  {
+   "id": "m229",
+   "file": "bmp3_defs.h",
+   "start": 8829,
+   "end": 8833,
+   "line": 235,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x4"
+  },
+  {
+   "id": "m230",
+   "file": "bmp3_defs.h",
+   "start": 8953,
+   "end": 8957,
+   "line": 237,
+   "cls": "DEFCONST",
+   "orig": "0x05",
+   "repl": "0x4"
+  },
+  {
+   "id": "m231",
+   "file": "bmp3_defs.h",
+   "start": 9015,
+   "end": 9019,
+   "line": 238,
+   "cls": "DEFCONST",
+   "orig": "0x06",
+   "repl": "0x7"
+  },
+  {
+   "id": "m232",
+   "file": "bmp3_defs.h",
+   "start": 9387,
+   "end": 9391,
+   "line": 244,
+   "cls": "DEFCONST",
+   "orig": "0x0C",
+   "repl": "0xd"
+  },
+  {
+   "id": "m233",
+   "file": "bmp3_defs.h",
+   "start": 9449,
+   "end": 9453,
+   "line": 245,
+   "cls": "DEFCONST",
+   "orig": "0x0D",
+   "repl": "0xe"
+  },
+  {
+   "id": "m234",
+   "file": "bmp3_defs.h",
+   "start": 9635,
+   "end": 9639,
+   "line": 248,
+   "cls": "DEFCONST",
+   "orig": "0x10",
+   "repl": "0x11"
+  },
+  {
+   "id": "m235",
+   "file": "bmp3_defs.h",
+   "start": 10182,
+   "end": 10183,
+   "line": 263,
+   "cls": "DEFCONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m236",
+   "file": "bmp3_defs.h",
+   "start": 10241,
+   "end": 10242,
+   "line": 264,
+   "cls": "DEFCONST",
+   "orig": "4",
+   "repl": "5"
+  },
+  {
+   "id": "m237",
+   "file": "bmp3_defs.h",
+   "start": 10418,
+   "end": 10419,
+   "line": 267,
+   "cls": "DEFCONST",
+   "orig": "7",
+   "repl": "6"
+  },
+  {
+   "id": "m238",
+   "file": "bmp3_defs.h",
+   "start": 10477,
+   "end": 10478,
+   "line": 268,
+   "cls": "DEFCONST",
+   "orig": "8",
+   "repl": "7"
+  },
+  {
+   "id": "m239",
+   "file": "bmp3_defs.h",
+   "start": 11153,
+   "end": 11154,
+   "line": 282,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m240",
+   "file": "bmp3_defs.h",
+   "start": 11158,
+   "end": 11159,
+   "line": 282,
+   "cls": "DEFCONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m241",
+   "file": "bmp3_defs.h",
+   "start": 11218,
+   "end": 11219,
+   "line": 283,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m242",
+   "file": "bmp3_defs.h",
+   "start": 11223,
+   "end": 11224,
+   "line": 283,
+   "cls": "DEFCONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m243",
+   "file": "bmp3_defs.h",
+   "start": 11288,
+   "end": 11289,
+   "line": 284,
+   "cls": "DEFCONST",
+   "orig": "4",
+   "repl": "3"
+  },
+  {
+   "id": "m244",
+   "file": "bmp3_defs.h",
+   "start": 11348,
+   "end": 11349,
+   "line": 285,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m245",
+   "file": "bmp3_defs.h",
+   "start": 11353,
+   "end": 11354,
+   "line": 285,
+   "cls": "DEFCONST",
+   "orig": "5",
+   "repl": "6"
+  },
+  {
+   "id": "m246",
+   "file": "bmp3_defs.h",
+   "start": 11478,
+   "end": 11479,
+   "line": 287,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m247",
+   "file": "bmp3_defs.h",
+   "start": 11548,
+   "end": 11549,
+   "line": 288,
+   "cls": "DEFCONST",
+   "orig": "8",
+   "repl": "9"
+  },
+  {
+   "id": "m248",
+   "file": "bmp3_defs.h",
+   "start": 11613,
+   "end": 11614,
+   "line": 289,
+   "cls": "DEFCONST",
+   "orig": "9",
+   "repl": "10"
+  },
+  {
+   "id": "m249",
+   "file": "bmp3_defs.h",
+   "start": 11805,
+   "end": 11806,
+   "line": 292,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m250",
+   "file": "bmp3_defs.h",
+   "start": 11871,
+   "end": 11876,
+   "line": 293,
+   "cls": "DEFCONST",
+   "orig": "0x7FF",
+   "repl": "0x800"
+  },
+  {
+   "id": "m251",
+   "file": "bmp3_defs.h",
+   "start": 12103,
+   "end": 12104,
+   "line": 298,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m252",
+   "file": "bmp3_defs.h",
+   "start": 12298,
+   "end": 12299,
+   "line": 301,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m253",
+   "file": "bmp3_defs.h",
+   "start": 12303,
+   "end": 12304,
+   "line": 301,
+   "cls": "DEFCONST",
+   "orig": "4",
+   "repl": "5"
+  },
+  {
+   "id": "m254",
+   "file": "bmp3_defs.h",
+   "start": 12368,
+   "end": 12369,
+   "line": 302,
+   "cls": "DEFCONST",
+   "orig": "5",
+   "repl": "4"
+  },
+  {
+   "id": "m255",
+   "file": "bmp3_defs.h",
+   "start": 12558,
+   "end": 12559,
+   "line": 305,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m256",
+   "file": "bmp3_defs.h",
+   "start": 12563,
+   "end": 12564,
+   "line": 305,
+   "cls": "DEFCONST",
+   "orig": "8",
+   "repl": "9"
+  },
+  {
+   "id": "m257",
+   "file": "bmp3_defs.h",
+   "start": 12623,
+   "end": 12624,
+   "line": 306,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m258",
+   "file": "bmp3_defs.h",
+   "start": 12822,
+   "end": 12823,
+   "line": 311,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m259",
+   "file": "bmp3_defs.h",
+   "start": 12881,
+   "end": 12882,
+   "line": 312,
+   "cls": "DEFCONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m260",
+   "file": "bmp3_defs.h",
+   "start": 13695,
+   "end": 13699,
+   "line": 330,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x1"
+  },
+  {
+   "id": "m261",
+   "file": "bmp3_defs.h",
+   "start": 13945,
+   "end": 13949,
+   "line": 336,
+   "cls": "DEFCONST",
+   "orig": "0x10",
+   "repl": "0x11"
+  },
+  {
+   "id": "m262",
+   "file": "bmp3_defs.h",
+   "start": 14007,
+   "end": 14011,
+   "line": 337,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x3"
+  },
+  {
+   "id": "m263",
+   "file": "bmp3_defs.h",
+   "start": 14070,
+   "end": 14074,
+   "line": 339,
+   "cls": "DEFCONST",
+   "orig": "0x20",
+   "repl": "0x1f"
+  },
+  {
+   "id": "m264",
+   "file": "bmp3_defs.h",
+   "start": 14382,
+   "end": 14386,
+   "line": 346,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x5"
+  },
+  {
+   "id": "m265",
+   "file": "bmp3_defs.h",
+   "start": 14445,
+   "end": 14449,
+   "line": 348,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m266",
+   "file": "bmp3_defs.h",
+   "start": 14570,
+   "end": 14574,
+   "line": 351,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x2"
+  },
+  {
+   "id": "m267",
+   "file": "bmp3_defs.h",
+   "start": 14633,
+   "end": 14637,
+   "line": 353,
+   "cls": "DEFCONST",
+   "orig": "0x0E",
+   "repl": "0xf"
+  },
+  {
+   "id": "m268",
+   "file": "bmp3_defs.h",
+   "start": 14884,
+   "end": 14888,
+   "line": 360,
+   "cls": "DEFCONST",
+   "orig": "0x38",
+   "repl": "0x39"
+  },
+  {
+   "id": "m269",
+   "file": "bmp3_defs.h",
+   "start": 14946,
+   "end": 14950,
+   "line": 361,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x2"
+  },
+  {
+   "id": "m270",
+   "file": "bmp3_defs.h",
+   "start": 15134,
+   "end": 15138,
+   "line": 366,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x2"
+  },
+  {
+   "id": "m271",
+   "file": "bmp3_defs.h",
+   "start": 15259,
+   "end": 15263,
+   "line": 369,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x3"
+  },
+  {
+   "id": "m272",
+   "file": "bmp3_defs.h",
+   "start": 15384,
+   "end": 15388,
+   "line": 372,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x2"
+  },
+  {
+   "id": "m273",
+   "file": "bmp3_defs.h",
+   "start": 15447,
+   "end": 15451,
+   "line": 374,
+   "cls": "DEFCONST",
+   "orig": "0x10",
+   "repl": "0xf"
+  },
+  {
+   "id": "m274",
+   "file": "bmp3_defs.h",
+   "start": 15634,
+   "end": 15638,
+   "line": 378,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x2"
+  },
+  {
+   "id": "m275",
+   "file": "bmp3_defs.h",
+   "start": 15697,
+   "end": 15701,
+   "line": 380,
+   "cls": "DEFCONST",
+   "orig": "0x07",
+   "repl": "0x6"
+  },
+  {
+   "id": "m276",
+   "file": "bmp3_defs.h",
+   "start": 15822,
+   "end": 15826,
+   "line": 383,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x2"
+  },
+  {
+   "id": "m277",
+   "file": "bmp3_defs.h",
+   "start": 15947,
+   "end": 15951,
+   "line": 386,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x5"
+  },
+  {
+   "id": "m278",
+   "file": "bmp3_defs.h",
+   "start": 16073,
+   "end": 16077,
+   "line": 390,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x3"
+  },
+  {
+   "id": "m279",
+   "file": "bmp3_defs.h",
+   "start": 16198,
+   "end": 16202,
+   "line": 393,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x5"
+  },
+  {
+   "id": "m280",
+   "file": "bmp3_defs.h",
+   "start": 16260,
+   "end": 16264,
+   "line": 394,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x3"
+  },
+  {
+   "id": "m281",
+   "file": "bmp3_defs.h",
+   "start": 16385,
+   "end": 16389,
+   "line": 397,
+   "cls": "DEFCONST",
+   "orig": "0x06",
+   "repl": "0x7"
+  },
+  {
+   "id": "m282",
+   "file": "bmp3_defs.h",
+   "start": 16448,
+   "end": 16452,
+   "line": 399,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x1"
+  },
+  {
+   "id": "m283",
+   "file": "bmp3_defs.h",
+   "start": 16573,
+   "end": 16577,
+   "line": 402,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x5"
+  },
+  {
+   "id": "m284",
+   "file": "bmp3_defs.h",
+   "start": 16761,
+   "end": 16765,
+   "line": 407,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x3"
+  },
+  {
+   "id": "m285",
+   "file": "bmp3_defs.h",
+   "start": 16948,
+   "end": 16952,
+   "line": 411,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x2"
+  },
+  {
+   "id": "m286",
+   "file": "bmp3_defs.h",
+   "start": 17043,
+   "end": 17049,
+   "line": 414,
+   "cls": "DEFCONST",
+   "orig": "0x00FF",
+   "repl": "0xfe"
+  },
+  {
+   "id": "m287",
+   "file": "bmp3_defs.h",
+   "start": 18158,
+   "end": 18160,
+   "line": 439,
+   "cls": "DEFCONST",
+   "orig": "21",
+   "repl": "20"
+  },
+  {
+   "id": "m288",
+   "file": "bmp3_defs.h",
+   "start": 18218,
+   "end": 18219,
+   "line": 440,
+   "cls": "DEFCONST",
+   "orig": "7",
+   "repl": "6"
+  },
+  {
+   "id": "m289",
+   "file": "bmp3_defs.h",
+   "start": 18277,
+   "end": 18278,
+   "line": 441,
+   "cls": "DEFCONST",
+   "orig": "4",
+   "repl": "5"
+  },
+  {
+   "id": "m290",
+   "file": "bmp3_defs.h",
+   "start": 18336,
+   "end": 18337,
+   "line": 442,
+   "cls": "DEFCONST",
+   "orig": "6",
+   "repl": "7"
+  },
+  {
+   "id": "m291",
+   "file": "bmp3_defs.h",
+   "start": 18513,
+   "end": 18514,
+   "line": 445,
+   "cls": "DEFCONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m292",
+   "file": "bmp3_defs.h",
+   "start": 18572,
+   "end": 18573,
+   "line": 446,
+   "cls": "DEFCONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m293",
+   "file": "bmp3_defs.h",
+   "start": 18631,
+   "end": 18633,
+   "line": 447,
+   "cls": "DEFCONST",
+   "orig": "73",
+   "repl": "74"
+  },
+  {
+   "id": "m294",
+   "file": "bmp3_defs.h",
+   "start": 18723,
+   "end": 18729,
+   "line": 450,
+   "cls": "DEFCONST",
+   "orig": "0x0006",
+   "repl": "0x7"
+  },
+  {
+   "id": "m295",
+   "file": "bmp3_defs.h",
+   "start": 18820,
+   "end": 18826,
+   "line": 453,
+   "cls": "DEFCONST",
+   "orig": "0x00F0",
+   "repl": "0xef"
+  },
+  {
+   "id": "m296",
+   "file": "bmp3_defs.h",
+   "start": 19010,
+   "end": 19016,
+   "line": 459,
+   "cls": "DEFCONST",
+   "orig": "0x1800",
+   "repl": "0x1801"
+  },
+  {
+   "id": "m297",
+   "file": "bmp3_defs.h",
+   "start": 19568,
+   "end": 19572,
+   "line": 475,
+   "cls": "DEFCONST",
+   "orig": "0x94",
+   "repl": "0x95"
+  },
+  {
+   "id": "m298",
+   "file": "bmp3_defs.h",
+   "start": 20061,
+   "end": 20065,
+   "line": 490,
+   "cls": "DEFCONST",
+   "orig": "0x48",
+   "repl": "0x49"
+  },
+  {
+   "id": "m299",
+   "file": "bmp3_defs.h",
+   "start": 20254,
+   "end": 20256,
+   "line": 496,
+   "cls": "DEFCONST",
+   "orig": "20",
+   "repl": "21"
+  }
+ ]
+}

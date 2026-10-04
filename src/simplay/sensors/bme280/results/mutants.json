@@ -1,0 +1,2006 @@
+{
+ "seed": 20261004,
+ "n_sites": 380,
+ "mutants": [
+  {
+   "id": "m000",
+   "file": "bme280.c",
+   "start": 15045,
+   "end": 15047,
+   "line": 431,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m001",
+   "file": "bme280.c",
+   "start": 15617,
+   "end": 15619,
+   "line": 456,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m002",
+   "file": "bme280.c",
+   "start": 15773,
+   "end": 15774,
+   "line": 461,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m003",
+   "file": "bme280.c",
+   "start": 15968,
+   "end": 15970,
+   "line": 468,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m004",
+   "file": "bme280.c",
+   "start": 16374,
+   "end": 16376,
+   "line": 488,
+   "cls": "CONST",
+   "orig": "20",
+   "repl": "21"
+  },
+  {
+   "id": "m005",
+   "file": "bme280.c",
+   "start": 16698,
+   "end": 16700,
+   "line": 501,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m006",
+   "file": "bme280.c",
+   "start": 16712,
+   "end": 16714,
+   "line": 501,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m007",
+   "file": "bme280.c",
+   "start": 16817,
+   "end": 16818,
+   "line": 505,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m008",
+   "file": "bme280.c",
+   "start": 16995,
+   "end": 16996,
+   "line": 510,
+   "cls": "ROR",
+   "orig": "<",
+   "repl": "<="
+  },
+  {
+   "id": "m009",
+   "file": "bme280.c",
+   "start": 17104,
+   "end": 17105,
+   "line": 512,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m010",
+   "file": "bme280.c",
+   "start": 17106,
+   "end": 17110,
+   "line": 512,
+   "cls": "CONST",
+   "orig": "0x7F",
+   "repl": "0x80"
+  },
+  {
+   "id": "m011",
+   "file": "bme280.c",
+   "start": 17200,
+   "end": 17201,
+   "line": 517,
+   "cls": "ROR",
+   "orig": ">",
+   "repl": ">="
+  },
+  {
+   "id": "m012",
+   "file": "bme280.c",
+   "start": 17202,
+   "end": 17203,
+   "line": 517,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m013",
+   "file": "bme280.c",
+   "start": 17440,
+   "end": 17441,
+   "line": 523,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m014",
+   "file": "bme280.c",
+   "start": 17443,
+   "end": 17444,
+   "line": 523,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m015",
+   "file": "bme280.c",
+   "start": 17445,
+   "end": 17446,
+   "line": 523,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m016",
+   "file": "bme280.c",
+   "start": 18349,
+   "end": 18351,
+   "line": 562,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m017",
+   "file": "bme280.c",
+   "start": 18441,
+   "end": 18443,
+   "line": 566,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m018",
+   "file": "bme280.c",
+   "start": 18455,
+   "end": 18457,
+   "line": 566,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m019",
+   "file": "bme280.c",
+   "start": 19015,
+   "end": 19017,
+   "line": 584,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m020",
+   "file": "bme280.c",
+   "start": 19681,
+   "end": 19683,
+   "line": 611,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m021",
+   "file": "bme280.c",
+   "start": 20225,
+   "end": 20227,
+   "line": 637,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m022",
+   "file": "bme280.c",
+   "start": 20748,
+   "end": 20749,
+   "line": 661,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m023",
+   "file": "bme280.c",
+   "start": 21193,
+   "end": 21194,
+   "line": 682,
+   "cls": "CONST",
+   "orig": "5",
+   "repl": "4"
+  },
+  {
+   "id": "m024",
+   "file": "bme280.c",
+   "start": 21399,
+   "end": 21400,
+   "line": 688,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m025",
+   "file": "bme280.c",
+   "start": 21422,
+   "end": 21424,
+   "line": 690,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m026",
+   "file": "bme280.c",
+   "start": 21768,
+   "end": 21770,
+   "line": 699,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m027",
+   "file": "bme280.c",
+   "start": 21798,
+   "end": 21799,
+   "line": 699,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m028",
+   "file": "bme280.c",
+   "start": 22489,
+   "end": 22490,
+   "line": 723,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m029",
+   "file": "bme280.c",
+   "start": 22513,
+   "end": 22515,
+   "line": 725,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m030",
+   "file": "bme280.c",
+   "start": 22702,
+   "end": 22704,
+   "line": 730,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m031",
+   "file": "bme280.c",
+   "start": 23619,
+   "end": 23621,
+   "line": 761,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m032",
+   "file": "bme280.c",
+   "start": 23628,
+   "end": 23630,
+   "line": 761,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m033",
+   "file": "bme280.c",
+   "start": 23642,
+   "end": 23644,
+   "line": 761,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m034",
+   "file": "bme280.c",
+   "start": 23666,
+   "end": 23668,
+   "line": 761,
+   "cls": "ROR",
+   "orig": "!=",
+   "repl": "=="
+  },
+  {
+   "id": "m035",
+   "file": "bme280.c",
+   "start": 23814,
+   "end": 23815,
+   "line": 766,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m036",
+   "file": "bme280.c",
+   "start": 23905,
+   "end": 23906,
+   "line": 769,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m037",
+   "file": "bme280.c",
+   "start": 23921,
+   "end": 23922,
+   "line": 769,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m038",
+   "file": "bme280.c",
+   "start": 23935,
+   "end": 23936,
+   "line": 769,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m039",
+   "file": "bme280.c",
+   "start": 24131,
+   "end": 24132,
+   "line": 775,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m040",
+   "file": "bme280.c",
+   "start": 25030,
+   "end": 25031,
+   "line": 807,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m041",
+   "file": "bme280.c",
+   "start": 25042,
+   "end": 25043,
+   "line": 807,
+   "cls": "CONST",
+   "orig": "8",
+   "repl": "9"
+  },
+  {
+   "id": "m042",
+   "file": "bme280.c",
+   "start": 25045,
+   "end": 25047,
+   "line": 807,
+   "cls": "CONST",
+   "orig": "16",
+   "repl": "17"
+  },
+  {
+   "id": "m043",
+   "file": "bme280.c",
+   "start": 25079,
+   "end": 25081,
+   "line": 809,
+   "cls": "LOGICAL",
+   "orig": "&&",
+   "repl": "||"
+  },
+  {
+   "id": "m044",
+   "file": "bme280.c",
+   "start": 25438,
+   "end": 25440,
+   "line": 821,
+   "cls": "ROR",
+   "orig": "<=",
+   "repl": ">"
+  },
+  {
+   "id": "m045",
+   "file": "bme280.c",
+   "start": 25657,
+   "end": 25659,
+   "line": 830,
+   "cls": "ROR",
+   "orig": "<=",
+   "repl": ">"
+  },
+  {
+   "id": "m046",
+   "file": "bme280.c",
+   "start": 25912,
+   "end": 25913,
+   "line": 840,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m047",
+   "file": "bme280.c",
+   "start": 26085,
+   "end": 26086,
+   "line": 842,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m048",
+   "file": "bme280.c",
+   "start": 26679,
+   "end": 26680,
+   "line": 863,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m049",
+   "file": "bme280.c",
+   "start": 26796,
+   "end": 26797,
+   "line": 868,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m050",
+   "file": "bme280.c",
+   "start": 26820,
+   "end": 26821,
+   "line": 868,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m051",
+   "file": "bme280.c",
+   "start": 27280,
+   "end": 27281,
+   "line": 886,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m052",
+   "file": "bme280.c",
+   "start": 27774,
+   "end": 27775,
+   "line": 901,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m053",
+   "file": "bme280.c",
+   "start": 28345,
+   "end": 28347,
+   "line": 922,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m054",
+   "file": "bme280.c",
+   "start": 28394,
+   "end": 28395,
+   "line": 924,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m055",
+   "file": "bme280.c",
+   "start": 28742,
+   "end": 28743,
+   "line": 935,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m056",
+   "file": "bme280.c",
+   "start": 29276,
+   "end": 29277,
+   "line": 953,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m057",
+   "file": "bme280.c",
+   "start": 29299,
+   "end": 29301,
+   "line": 955,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m058",
+   "file": "bme280.c",
+   "start": 29348,
+   "end": 29349,
+   "line": 957,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m059",
+   "file": "bme280.c",
+   "start": 29474,
+   "end": 29475,
+   "line": 962,
+   "cls": "BITWISE",
+   "orig": "&",
+   "repl": "|"
+  },
+  {
+   "id": "m060",
+   "file": "bme280.c",
+   "start": 31352,
+   "end": 31353,
+   "line": 1017,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m061",
+   "file": "bme280.c",
+   "start": 31492,
+   "end": 31493,
+   "line": 1019,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m062",
+   "file": "bme280.c",
+   "start": 31563,
+   "end": 31564,
+   "line": 1020,
+   "cls": "CONST",
+   "orig": "3",
+   "repl": "4"
+  },
+  {
+   "id": "m063",
+   "file": "bme280.c",
+   "start": 32124,
+   "end": 32126,
+   "line": 1036,
+   "cls": "SHIFT",
+   "orig": "<<",
+   "repl": ">>"
+  },
+  {
+   "id": "m064",
+   "file": "bme280.c",
+   "start": 32243,
+   "end": 32244,
+   "line": 1038,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "1"
+  },
+  {
+   "id": "m065",
+   "file": "bme280.c",
+   "start": 32306,
+   "end": 32307,
+   "line": 1039,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m066",
+   "file": "bme280.c",
+   "start": 32317,
+   "end": 32318,
+   "line": 1039,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m067",
+   "file": "bme280.c",
+   "start": 32429,
+   "end": 32430,
+   "line": 1042,
+   "cls": "CONST",
+   "orig": "3",
+   "repl": "2"
+  },
+  {
+   "id": "m068",
+   "file": "bme280.c",
+   "start": 32490,
+   "end": 32491,
+   "line": 1043,
+   "cls": "CONST",
+   "orig": "4",
+   "repl": "3"
+  },
+  {
+   "id": "m069",
+   "file": "bme280.c",
+   "start": 32554,
+   "end": 32556,
+   "line": 1044,
+   "cls": "SHIFT",
+   "orig": ">>",
+   "repl": "<<"
+  },
+  {
+   "id": "m070",
+   "file": "bme280.c",
+   "start": 32737,
+   "end": 32738,
+   "line": 1048,
+   "cls": "CONST",
+   "orig": "6",
+   "repl": "7"
+  },
+  {
+   "id": "m071",
+   "file": "bme280.c",
+   "start": 32838,
+   "end": 32839,
+   "line": 1050,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m072",
+   "file": "bme280.c",
+   "start": 33266,
+   "end": 33267,
+   "line": 1065,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m073",
+   "file": "bme280.c",
+   "start": 33561,
+   "end": 33562,
+   "line": 1073,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m074",
+   "file": "bme280.c",
+   "start": 33762,
+   "end": 33763,
+   "line": 1085,
+   "cls": "CONST",
+   "orig": "4",
+   "repl": "5"
+  },
+  {
+   "id": "m075",
+   "file": "bme280.c",
+   "start": 34454,
+   "end": 34456,
+   "line": 1114,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m076",
+   "file": "bme280.c",
+   "start": 38863,
+   "end": 38867,
+   "line": 1253,
+   "cls": "CONST",
+   "orig": "4000",
+   "repl": "3999"
+  },
+  {
+   "id": "m077",
+   "file": "bme280.c",
+   "start": 38899,
+   "end": 38903,
+   "line": 1254,
+   "cls": "CONST",
+   "orig": "8500",
+   "repl": "8501"
+  },
+  {
+   "id": "m078",
+   "file": "bme280.c",
+   "start": 38958,
+   "end": 38959,
+   "line": 1256,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m079",
+   "file": "bme280.c",
+   "start": 39103,
+   "end": 39105,
+   "line": 1258,
+   "cls": "CONST",
+   "orig": "16",
+   "repl": "15"
+  },
+  {
+   "id": "m080",
+   "file": "bme280.c",
+   "start": 39107,
+   "end": 39108,
+   "line": 1258,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m081",
+   "file": "bme280.c",
+   "start": 39170,
+   "end": 39174,
+   "line": 1259,
+   "cls": "CONST",
+   "orig": "4096",
+   "repl": "4095"
+  },
+  {
+   "id": "m082",
+   "file": "bme280.c",
+   "start": 39211,
+   "end": 39216,
+   "line": 1259,
+   "cls": "CONST",
+   "orig": "16384",
+   "repl": "16383"
+  },
+  {
+   "id": "m083",
+   "file": "bme280.c",
+   "start": 39248,
+   "end": 39249,
+   "line": 1260,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m084",
+   "file": "bme280.c",
+   "start": 39296,
+   "end": 39297,
+   "line": 1261,
+   "cls": "CONST",
+   "orig": "5",
+   "repl": "4"
+  },
+  {
+   "id": "m085",
+   "file": "bme280.c",
+   "start": 39298,
+   "end": 39299,
+   "line": 1261,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m086",
+   "file": "bme280.c",
+   "start": 39300,
+   "end": 39303,
+   "line": 1261,
+   "cls": "CONST",
+   "orig": "128",
+   "repl": "129"
+  },
+  {
+   "id": "m087",
+   "file": "bme280.c",
+   "start": 39307,
+   "end": 39310,
+   "line": 1261,
+   "cls": "CONST",
+   "orig": "256",
+   "repl": "257"
+  },
+  {
+   "id": "m088",
+   "file": "bme280.c",
+   "start": 39333,
+   "end": 39334,
+   "line": 1263,
+   "cls": "ROR",
+   "orig": "<",
+   "repl": ">="
+  },
+  {
+   "id": "m089",
+   "file": "bme280.c",
+   "start": 40092,
+   "end": 40100,
+   "line": 1290,
+   "cls": "CONST",
+   "orig": "11000000",
+   "repl": "10999999"
+  },
+  {
+   "id": "m090",
+   "file": "bme280.c",
+   "start": 40144,
+   "end": 40145,
+   "line": 1292,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m091",
+   "file": "bme280.c",
+   "start": 40146,
+   "end": 40152,
+   "line": 1292,
+   "cls": "CONST",
+   "orig": "128000",
+   "repl": "128001"
+  },
+  {
+   "id": "m092",
+   "file": "bme280.c",
+   "start": 40224,
+   "end": 40225,
+   "line": 1294,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m093",
+   "file": "bme280.c",
+   "start": 40266,
+   "end": 40272,
+   "line": 1294,
+   "cls": "CONST",
+   "orig": "131072",
+   "repl": "131073"
+  },
+  {
+   "id": "m094",
+   "file": "bme280.c",
+   "start": 40291,
+   "end": 40292,
+   "line": 1295,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m095",
+   "file": "bme280.c",
+   "start": 40403,
+   "end": 40404,
+   "line": 1296,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m096",
+   "file": "bme280.c",
+   "start": 40480,
+   "end": 40495,
+   "line": 1297,
+   "cls": "CONST",
+   "orig": "140737488355328",
+   "repl": "140737488355329"
+  },
+  {
+   "id": "m097",
+   "file": "bme280.c",
+   "start": 40629,
+   "end": 40630,
+   "line": 1301,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m098",
+   "file": "bme280.c",
+   "start": 40653,
+   "end": 40660,
+   "line": 1303,
+   "cls": "CONST",
+   "orig": "1048576",
+   "repl": "1048577"
+  },
+  {
+   "id": "m099",
+   "file": "bme280.c",
+   "start": 40661,
+   "end": 40662,
+   "line": 1303,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m100",
+   "file": "bme280.c",
+   "start": 40719,
+   "end": 40729,
+   "line": 1304,
+   "cls": "CONST",
+   "orig": "2147483648",
+   "repl": "2147483649"
+  },
+  {
+   "id": "m101",
+   "file": "bme280.c",
+   "start": 40812,
+   "end": 40816,
+   "line": 1305,
+   "cls": "CONST",
+   "orig": "8192",
+   "repl": "8191"
+  },
+  {
+   "id": "m102",
+   "file": "bme280.c",
+   "start": 40828,
+   "end": 40832,
+   "line": 1305,
+   "cls": "CONST",
+   "orig": "8192",
+   "repl": "8193"
+  },
+  {
+   "id": "m103",
+   "file": "bme280.c",
+   "start": 40837,
+   "end": 40845,
+   "line": 1305,
+   "cls": "CONST",
+   "orig": "33554432",
+   "repl": "33554433"
+  },
+  {
+   "id": "m104",
+   "file": "bme280.c",
+   "start": 40933,
+   "end": 40934,
+   "line": 1307,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m105",
+   "file": "bme280.c",
+   "start": 40950,
+   "end": 40953,
+   "line": 1307,
+   "cls": "CONST",
+   "orig": "256",
+   "repl": "257"
+  },
+  {
+   "id": "m106",
+   "file": "bme280.c",
+   "start": 40955,
+   "end": 40956,
+   "line": 1307,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m107",
+   "file": "bme280.c",
+   "start": 41034,
+   "end": 41035,
+   "line": 1308,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m108",
+   "file": "bme280.c",
+   "start": 41039,
+   "end": 41042,
+   "line": 1308,
+   "cls": "CONST",
+   "orig": "100",
+   "repl": "99"
+  },
+  {
+   "id": "m109",
+   "file": "bme280.c",
+   "start": 41046,
+   "end": 41049,
+   "line": 1308,
+   "cls": "CONST",
+   "orig": "128",
+   "repl": "129"
+  },
+  {
+   "id": "m110",
+   "file": "bme280.c",
+   "start": 43831,
+   "end": 43837,
+   "line": 1403,
+   "cls": "CONST",
+   "orig": "102400",
+   "repl": "102401"
+  },
+  {
+   "id": "m111",
+   "file": "bme280.c",
+   "start": 43882,
+   "end": 43887,
+   "line": 1405,
+   "cls": "CONST",
+   "orig": "76800",
+   "repl": "76801"
+  },
+  {
+   "id": "m112",
+   "file": "bme280.c",
+   "start": 43935,
+   "end": 43940,
+   "line": 1406,
+   "cls": "CONST",
+   "orig": "16384",
+   "repl": "16383"
+  },
+  {
+   "id": "m113",
+   "file": "bme280.c",
+   "start": 43996,
+   "end": 44003,
+   "line": 1407,
+   "cls": "CONST",
+   "orig": "1048576",
+   "repl": "1048577"
+  },
+  {
+   "id": "m114",
+   "file": "bme280.c",
+   "start": 44259,
+   "end": 44260,
+   "line": 1412,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m115",
+   "file": "bme280.c",
+   "start": 44280,
+   "end": 44284,
+   "line": 1412,
+   "cls": "CONST",
+   "orig": "1024",
+   "repl": "1025"
+  },
+  {
+   "id": "m116",
+   "file": "bme280.c",
+   "start": 44286,
+   "end": 44287,
+   "line": 1412,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m117",
+   "file": "bme280.c",
+   "start": 44297,
+   "end": 44304,
+   "line": 1412,
+   "cls": "CONST",
+   "orig": "2097152",
+   "repl": "2097153"
+  },
+  {
+   "id": "m118",
+   "file": "bme280.c",
+   "start": 44357,
+   "end": 44358,
+   "line": 1413,
+   "cls": "AOR",
+   "orig": "+",
+   "repl": "-"
+  },
+  {
+   "id": "m119",
+   "file": "bme280.c",
+   "start": 44367,
+   "end": 44372,
+   "line": 1413,
+   "cls": "CONST",
+   "orig": "16384",
+   "repl": "16385"
+  },
+  {
+   "id": "m120",
+   "file": "bme280.c",
+   "start": 44435,
+   "end": 44440,
+   "line": 1415,
+   "cls": "CONST",
+   "orig": "32768",
+   "repl": "32769"
+  },
+  {
+   "id": "m121",
+   "file": "bme280.c",
+   "start": 44532,
+   "end": 44533,
+   "line": 1417,
+   "cls": "ROR",
+   "orig": "<",
+   "repl": ">="
+  },
+  {
+   "id": "m122",
+   "file": "bme280.c",
+   "start": 44534,
+   "end": 44535,
+   "line": 1417,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m123",
+   "file": "bme280.c",
+   "start": 44538,
+   "end": 44539,
+   "line": 1417,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m124",
+   "file": "bme280.c",
+   "start": 45271,
+   "end": 45273,
+   "line": 1445,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m125",
+   "file": "bme280.c",
+   "start": 45686,
+   "end": 45688,
+   "line": 1456,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m126",
+   "file": "bme280.c",
+   "start": 46211,
+   "end": 46212,
+   "line": 1476,
+   "cls": "ROR",
+   "orig": "<",
+   "repl": "<="
+  },
+  {
+   "id": "m127",
+   "file": "bme280.c",
+   "start": 46260,
+   "end": 46261,
+   "line": 1478,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m128",
+   "file": "bme280.c",
+   "start": 46263,
+   "end": 46264,
+   "line": 1478,
+   "cls": "AOR",
+   "orig": "-",
+   "repl": "+"
+  },
+  {
+   "id": "m129",
+   "file": "bme280.c",
+   "start": 46265,
+   "end": 46266,
+   "line": 1478,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m130",
+   "file": "bme280.c",
+   "start": 46689,
+   "end": 46690,
+   "line": 1491,
+   "cls": "CONST",
+   "orig": "1",
+   "repl": "2"
+  },
+  {
+   "id": "m131",
+   "file": "bme280.c",
+   "start": 46851,
+   "end": 46852,
+   "line": 1493,
+   "cls": "CONST",
+   "orig": "5",
+   "repl": "4"
+  },
+  {
+   "id": "m132",
+   "file": "bme280.c",
+   "start": 46923,
+   "end": 46924,
+   "line": 1494,
+   "cls": "CONST",
+   "orig": "7",
+   "repl": "8"
+  },
+  {
+   "id": "m133",
+   "file": "bme280.c",
+   "start": 47004,
+   "end": 47005,
+   "line": 1495,
+   "cls": "CONST",
+   "orig": "9",
+   "repl": "8"
+  },
+  {
+   "id": "m134",
+   "file": "bme280.c",
+   "start": 47168,
+   "end": 47170,
+   "line": 1497,
+   "cls": "CONST",
+   "orig": "13",
+   "repl": "14"
+  },
+  {
+   "id": "m135",
+   "file": "bme280.c",
+   "start": 47182,
+   "end": 47184,
+   "line": 1497,
+   "cls": "CONST",
+   "orig": "12",
+   "repl": "11"
+  },
+  {
+   "id": "m136",
+   "file": "bme280.c",
+   "start": 47334,
+   "end": 47336,
+   "line": 1499,
+   "cls": "CONST",
+   "orig": "17",
+   "repl": "16"
+  },
+  {
+   "id": "m137",
+   "file": "bme280.c",
+   "start": 47431,
+   "end": 47433,
+   "line": 1500,
+   "cls": "CONST",
+   "orig": "18",
+   "repl": "19"
+  },
+  {
+   "id": "m138",
+   "file": "bme280.c",
+   "start": 47500,
+   "end": 47502,
+   "line": 1501,
+   "cls": "CONST",
+   "orig": "21",
+   "repl": "20"
+  },
+  {
+   "id": "m139",
+   "file": "bme280.c",
+   "start": 47637,
+   "end": 47639,
+   "line": 1503,
+   "cls": "CONST",
+   "orig": "25",
+   "repl": "26"
+  },
+  {
+   "id": "m140",
+   "file": "bme280.c",
+   "start": 48090,
+   "end": 48091,
+   "line": 1518,
+   "cls": "CONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m141",
+   "file": "bme280.c",
+   "start": 48129,
+   "end": 48130,
+   "line": 1519,
+   "cls": "CONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m142",
+   "file": "bme280.c",
+   "start": 48221,
+   "end": 48222,
+   "line": 1521,
+   "cls": "CONST",
+   "orig": "4",
+   "repl": "3"
+  },
+  {
+   "id": "m143",
+   "file": "bme280.c",
+   "start": 48226,
+   "end": 48230,
+   "line": 1521,
+   "cls": "CONST",
+   "orig": "0x0F",
+   "repl": "0xe"
+  },
+  {
+   "id": "m144",
+   "file": "bme280.c",
+   "start": 48269,
+   "end": 48270,
+   "line": 1522,
+   "cls": "BITWISE",
+   "orig": "|",
+   "repl": "&"
+  },
+  {
+   "id": "m145",
+   "file": "bme280.c",
+   "start": 48331,
+   "end": 48333,
+   "line": 1523,
+   "cls": "CONST",
+   "orig": "16",
+   "repl": "15"
+  },
+  {
+   "id": "m146",
+   "file": "bme280.c",
+   "start": 48374,
+   "end": 48376,
+   "line": 1524,
+   "cls": "SHIFT",
+   "orig": ">>",
+   "repl": "<<"
+  },
+  {
+   "id": "m147",
+   "file": "bme280.c",
+   "start": 48473,
+   "end": 48474,
+   "line": 1526,
+   "cls": "CONST",
+   "orig": "6",
+   "repl": "7"
+  },
+  {
+   "id": "m148",
+   "file": "bme280.c",
+   "start": 49232,
+   "end": 49234,
+   "line": 1559,
+   "cls": "LOGICAL",
+   "orig": "||",
+   "repl": "&&"
+  },
+  {
+   "id": "m149",
+   "file": "bme280.c",
+   "start": 49255,
+   "end": 49257,
+   "line": 1559,
+   "cls": "LOGICAL",
+   "orig": "||",
+   "repl": "&&"
+  },
+  {
+   "id": "m150",
+   "file": "bme280.c",
+   "start": 49270,
+   "end": 49272,
+   "line": 1559,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m151",
+   "file": "bme280.c",
+   "start": 49297,
+   "end": 49299,
+   "line": 1559,
+   "cls": "ROR",
+   "orig": "==",
+   "repl": "!="
+  },
+  {
+   "id": "m152",
+   "file": "bme280_defs.h",
+   "start": 4153,
+   "end": 4154,
+   "line": 122,
+   "cls": "DEFCONST",
+   "orig": "0",
+   "repl": "1"
+  },
+  {
+   "id": "m153",
+   "file": "bme280_defs.h",
+   "start": 4244,
+   "end": 4245,
+   "line": 125,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m154",
+   "file": "bme280_defs.h",
+   "start": 4305,
+   "end": 4306,
+   "line": 126,
+   "cls": "DEFCONST",
+   "orig": "2",
+   "repl": "1"
+  },
+  {
+   "id": "m155",
+   "file": "bme280_defs.h",
+   "start": 4366,
+   "end": 4367,
+   "line": 127,
+   "cls": "DEFCONST",
+   "orig": "3",
+   "repl": "4"
+  },
+  {
+   "id": "m156",
+   "file": "bme280_defs.h",
+   "start": 4488,
+   "end": 4489,
+   "line": 129,
+   "cls": "DEFCONST",
+   "orig": "5",
+   "repl": "6"
+  },
+  {
+   "id": "m157",
+   "file": "bme280_defs.h",
+   "start": 4549,
+   "end": 4550,
+   "line": 130,
+   "cls": "DEFCONST",
+   "orig": "6",
+   "repl": "7"
+  },
+  {
+   "id": "m158",
+   "file": "bme280_defs.h",
+   "start": 4831,
+   "end": 4835,
+   "line": 139,
+   "cls": "DEFCONST",
+   "orig": "0x76",
+   "repl": "0x75"
+  },
+  {
+   "id": "m159",
+   "file": "bme280_defs.h",
+   "start": 4895,
+   "end": 4899,
+   "line": 140,
+   "cls": "DEFCONST",
+   "orig": "0x77",
+   "repl": "0x76"
+  },
+  {
+   "id": "m160",
+   "file": "bme280_defs.h",
+   "start": 4990,
+   "end": 4994,
+   "line": 143,
+   "cls": "DEFCONST",
+   "orig": "0xD0",
+   "repl": "0xcf"
+  },
+  {
+   "id": "m161",
+   "file": "bme280_defs.h",
+   "start": 5054,
+   "end": 5058,
+   "line": 144,
+   "cls": "DEFCONST",
+   "orig": "0xE0",
+   "repl": "0xe1"
+  },
+  {
+   "id": "m162",
+   "file": "bme280_defs.h",
+   "start": 5118,
+   "end": 5122,
+   "line": 145,
+   "cls": "DEFCONST",
+   "orig": "0x88",
+   "repl": "0x89"
+  },
+  {
+   "id": "m163",
+   "file": "bme280_defs.h",
+   "start": 5374,
+   "end": 5378,
+   "line": 149,
+   "cls": "DEFCONST",
+   "orig": "0xF4",
+   "repl": "0xf5"
+  },
+  {
+   "id": "m164",
+   "file": "bme280_defs.h",
+   "start": 5438,
+   "end": 5442,
+   "line": 150,
+   "cls": "DEFCONST",
+   "orig": "0xF4",
+   "repl": "0xf5"
+  },
+  {
+   "id": "m165",
+   "file": "bme280_defs.h",
+   "start": 5502,
+   "end": 5506,
+   "line": 151,
+   "cls": "DEFCONST",
+   "orig": "0xF5",
+   "repl": "0xf6"
+  },
+  {
+   "id": "m166",
+   "file": "bme280_defs.h",
+   "start": 5667,
+   "end": 5669,
+   "line": 155,
+   "cls": "DEFCONST",
+   "orig": "26",
+   "repl": "27"
+  },
+  {
+   "id": "m167",
+   "file": "bme280_defs.h",
+   "start": 5790,
+   "end": 5791,
+   "line": 157,
+   "cls": "DEFCONST",
+   "orig": "8",
+   "repl": "9"
+  },
+  {
+   "id": "m168",
+   "file": "bme280_defs.h",
+   "start": 5948,
+   "end": 5952,
+   "line": 161,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x2"
+  },
+  {
+   "id": "m169",
+   "file": "bme280_defs.h",
+   "start": 6077,
+   "end": 6081,
+   "line": 164,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x2"
+  },
+  {
+   "id": "m170",
+   "file": "bme280_defs.h",
+   "start": 6303,
+   "end": 6307,
+   "line": 170,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m171",
+   "file": "bme280_defs.h",
+   "start": 6367,
+   "end": 6371,
+   "line": 171,
+   "cls": "DEFCONST",
+   "orig": "0x08",
+   "repl": "0x7"
+  },
+  {
+   "id": "m172",
+   "file": "bme280_defs.h",
+   "start": 6569,
+   "end": 6570,
+   "line": 177,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m173",
+   "file": "bme280_defs.h",
+   "start": 6635,
+   "end": 6636,
+   "line": 178,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m174",
+   "file": "bme280_defs.h",
+   "start": 6696,
+   "end": 6697,
+   "line": 179,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m175",
+   "file": "bme280_defs.h",
+   "start": 6701,
+   "end": 6702,
+   "line": 179,
+   "cls": "DEFCONST",
+   "orig": "2",
+   "repl": "3"
+  },
+  {
+   "id": "m176",
+   "file": "bme280_defs.h",
+   "start": 6762,
+   "end": 6766,
+   "line": 180,
+   "cls": "DEFCONST",
+   "orig": "0x07",
+   "repl": "0x6"
+  },
+  {
+   "id": "m177",
+   "file": "bme280_defs.h",
+   "start": 6866,
+   "end": 6867,
+   "line": 183,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m178",
+   "file": "bme280_defs.h",
+   "start": 6993,
+   "end": 6994,
+   "line": 185,
+   "cls": "DEFCONST",
+   "orig": "1",
+   "repl": "0"
+  },
+  {
+   "id": "m179",
+   "file": "bme280_defs.h",
+   "start": 7289,
+   "end": 7293,
+   "line": 191,
+   "cls": "DEFCONST",
+   "orig": "0x00",
+   "repl": "0x1"
+  },
+  {
+   "id": "m180",
+   "file": "bme280_defs.h",
+   "start": 7417,
+   "end": 7421,
+   "line": 193,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x1"
+  },
+  {
+   "id": "m181",
+   "file": "bme280_defs.h",
+   "start": 7545,
+   "end": 7549,
+   "line": 195,
+   "cls": "DEFCONST",
+   "orig": "0x04",
+   "repl": "0x3"
+  },
+  {
+   "id": "m182",
+   "file": "bme280_defs.h",
+   "start": 7673,
+   "end": 7675,
+   "line": 197,
+   "cls": "DEFCONST",
+   "orig": "16",
+   "repl": "17"
+  },
+  {
+   "id": "m183",
+   "file": "bme280_defs.h",
+   "start": 7800,
+   "end": 7804,
+   "line": 200,
+   "cls": "DEFCONST",
+   "orig": "0x00",
+   "repl": "0x1"
+  },
+  {
+   "id": "m184",
+   "file": "bme280_defs.h",
+   "start": 7864,
+   "end": 7868,
+   "line": 201,
+   "cls": "DEFCONST",
+   "orig": "0x1C",
+   "repl": "0x1d"
+  },
+  {
+   "id": "m185",
+   "file": "bme280_defs.h",
+   "start": 7928,
+   "end": 7932,
+   "line": 202,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x3"
+  },
+  {
+   "id": "m186",
+   "file": "bme280_defs.h",
+   "start": 8056,
+   "end": 8060,
+   "line": 204,
+   "cls": "DEFCONST",
+   "orig": "0x05",
+   "repl": "0x6"
+  },
+  {
+   "id": "m187",
+   "file": "bme280_defs.h",
+   "start": 8173,
+   "end": 8177,
+   "line": 207,
+   "cls": "DEFCONST",
+   "orig": "1250",
+   "repl": "1251"
+  },
+  {
+   "id": "m188",
+   "file": "bme280_defs.h",
+   "start": 8303,
+   "end": 8306,
+   "line": 209,
+   "cls": "DEFCONST",
+   "orig": "575",
+   "repl": "576"
+  },
+  {
+   "id": "m189",
+   "file": "bme280_defs.h",
+   "start": 8524,
+   "end": 8526,
+   "line": 214,
+   "cls": "DEFCONST",
+   "orig": "10",
+   "repl": "11"
+  },
+  {
+   "id": "m190",
+   "file": "bme280_defs.h",
+   "start": 8684,
+   "end": 8688,
+   "line": 218,
+   "cls": "DEFCONST",
+   "orig": "0x01",
+   "repl": "0x0"
+  },
+  {
+   "id": "m191",
+   "file": "bme280_defs.h",
+   "start": 8912,
+   "end": 8916,
+   "line": 222,
+   "cls": "DEFCONST",
+   "orig": "0x05",
+   "repl": "0x4"
+  },
+  {
+   "id": "m192",
+   "file": "bme280_defs.h",
+   "start": 8969,
+   "end": 8973,
+   "line": 223,
+   "cls": "DEFCONST",
+   "orig": "0x06",
+   "repl": "0x7"
+  },
+  {
+   "id": "m193",
+   "file": "bme280_defs.h",
+   "start": 9026,
+   "end": 9030,
+   "line": 224,
+   "cls": "DEFCONST",
+   "orig": "0x07",
+   "repl": "0x6"
+  },
+  {
+   "id": "m194",
+   "file": "bme280_defs.h",
+   "start": 9091,
+   "end": 9095,
+   "line": 226,
+   "cls": "DEFCONST",
+   "orig": "0xE0",
+   "repl": "0xdf"
+  },
+  {
+   "id": "m195",
+   "file": "bme280_defs.h",
+   "start": 9250,
+   "end": 9252,
+   "line": 230,
+   "cls": "DEFCONST",
+   "orig": "12",
+   "repl": "11"
+  },
+  {
+   "id": "m196",
+   "file": "bme280_defs.h",
+   "start": 9477,
+   "end": 9481,
+   "line": 235,
+   "cls": "DEFCONST",
+   "orig": "0x00",
+   "repl": "(-1)"
+  },
+  {
+   "id": "m197",
+   "file": "bme280_defs.h",
+   "start": 9591,
+   "end": 9595,
+   "line": 237,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x1"
+  },
+  {
+   "id": "m198",
+   "file": "bme280_defs.h",
+   "start": 9648,
+   "end": 9652,
+   "line": 238,
+   "cls": "DEFCONST",
+   "orig": "0x03",
+   "repl": "0x2"
+  },
+  {
+   "id": "m199",
+   "file": "bme280_defs.h",
+   "start": 9834,
+   "end": 9838,
+   "line": 242,
+   "cls": "DEFCONST",
+   "orig": "0x02",
+   "repl": "0x1"
+  }
+ ]
+}
