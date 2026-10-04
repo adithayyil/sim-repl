@@ -1,0 +1,53 @@
+{
+  "vendored": [
+    {
+      "component": "boschsensortec/BME280_SensorAPI",
+      "url": "https://github.com/boschsensortec/BME280_SensorAPI",
+      "commit": "c90d419492e26dd95586598a794e65eb2760753a",
+      "license": "BSD-3-Clause",
+      "destination": "src/simplay/sensors/bme280/vendor",
+      "files": [
+        "LICENSE",
+        "bme280.c",
+        "bme280.h",
+        "bme280_defs.h"
+      ]
+    },
+    {
+      "component": "boschsensortec/BMP3_SensorAPI",
+      "url": "https://github.com/boschsensortec/BMP3_SensorAPI",
+      "commit": "db4cf8e4140c593b8c3d85f8c6c07335c7ffa9dc",
+      "license": "BSD-3-Clause",
+      "destination": "src/simplay/sensors/bmp388/vendor",
+      "files": [
+        "LICENSE",
+        "bmp3.c",
+        "bmp3.h",
+        "bmp3_defs.h"
+      ]
+    },
+    {
+      "component": "renode/renode",
+      "url": "https://github.com/renode/renode",
+      "commit": "8f7a74f51eecc9f5691cc3c42ce6d0deab07b84e",
+      "license": "MIT",
+      "destination": "src/simplay/stm32f4.repl",
+      "files": [
+        "stm32f4.repl"
+      ],
+      "path_in_repo": "platforms/cpus/stm32f4.repl"
+    }
+  ],
+  "sha256": {
+    "src/simplay/stm32f4.repl": "a78bb20f3e594fffa9aec25d2ee85a7b165e8a381c603303ee237e7ce67d1194",
+    "src/simplay/sensors/bme280/vendor/LICENSE": "8c966978a9f67992e824d0b76381eab42f240c0049881f7bf2b46c2c093191aa",
+    "src/simplay/sensors/bme280/vendor/bme280.c": "7de1e7d3082b85e90db1daa34573ba77553a7caf44e06e216de5216b7ed4fa12",
+    "src/simplay/sensors/bme280/vendor/bme280.h": "6f144510e103f0ab1a24244a71f7ff8ab7f23147b4899aa7bfd0f526062d2163",
+    "src/simplay/sensors/bme280/vendor/bme280_defs.h": "541bbd32498b8603bc8fe8eafac26b15d09fb032d37448ca88e7aa398d6a0769",
+    "src/simplay/sensors/bmp388/vendor/LICENSE": "d9c5db188992f729d0069ff463c0b881e7de197c63da4f0eecb3f708b67b8bcd",
+    "src/simplay/sensors/bmp388/vendor/bmp3.c": "a63d24e0677050d712fa76a220f9d0516412d9453586758af19d1077dd40d0c5",
+    "src/simplay/sensors/bmp388/vendor/bmp3.h": "628acee93100264a7a851cfba568586bc04257abfbd78f088ec1c47891c85fe9",
+    "src/simplay/sensors/bmp388/vendor/bmp3_defs.h": "619af90a86a9bffdee800bcdfa35155038932736b9dbf76361bea1d42dfde272"
+  },
+  "note": "Only sensor drivers and the Renode platform description are third-party code. peer.py, checks.py, oracle.py, firmware/, and the simplay package are original. Datasheets are not redistributed; see each PREREG.md for where to fetch them."
+}
