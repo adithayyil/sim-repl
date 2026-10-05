@@ -13,6 +13,7 @@ stock Bosch driver fails it, see PREREG.md addendum B).
 
 from __future__ import annotations
 
+from ...spi import observed, states, transactions
 from . import oracle as ORACLE
 
 T_RANGE = (1500, 3500)  # 15.00 .. 35.00 degC, in centi-degrees
@@ -24,64 +25,50 @@ TRIGGER_STATE = (0x01, 0x51, 0x28)  # ctrl_hum, ctrl_meas, config at each forced
 RESET = (0x60, 0xB6)  # write pair: reset register, soft-reset command
 
 
-def _observed(o: dict) -> bool:
-    return o["status"] == "observed" and bool(o["ram"])
-
-
 def L0(o: dict) -> bool:
     return o["status"] == "observed" and o["uart"].startswith("OK")
 
 
 def L1(o: dict) -> bool:
-    if not _observed(o):
+    if not observed(o):
         return False
     r = o["ram"]
+    # Non-empty on purpose: all() over an empty list is True, so a mutant that
+    # skipped the measurement loop entirely would pass this level.
     return (
-        all(T_RANGE[0] <= t <= T_RANGE[1] for t in r["T"])
+        bool(r["T"])
+        and bool(r["P"])
+        and bool(r["H"])
+        and all(T_RANGE[0] <= t <= T_RANGE[1] for t in r["T"])
         and all(P_RANGE[0] <= p <= P_RANGE[1] for p in r["P"])
         and all(H_RANGE[0] <= h <= H_RANGE[1] for h in r["H"])
     )
 
 
 def L2(o: dict) -> bool:
-    if not _observed(o):
+    if not observed(o):
         return False
     r = o["ram"]
     expected = ORACLE.expected_measurements()
-    matched = all(
-        t == e[0] and h == e[2] and abs(p - e[1]) <= P_TOLERANCE
-        for (t, p, h), e in zip(zip(r["T"], r["P"], r["H"], strict=False), expected, strict=False)
+    return (
+        len(r["T"]) == len(r["P"]) == len(r["H"]) == len(expected)
+        and all(
+            t == e[0] and h == e[2] and abs(p - e[1]) <= P_TOLERANCE
+            for (t, p, h), e in zip(
+                zip(r["T"], r["P"], r["H"], strict=False), expected, strict=False
+            )
+        )
+        and r["md"] == ORACLE.t_measure_max_us(2, 8, 1)
     )
-    return matched and len(r["T"]) == len(expected) and r["md"] == ORACLE.t_measure_max_us(2, 8, 1)
 
 
 def L2x(o: dict) -> bool:
     """Strict L2, no pressure tolerance. The stock Bosch driver fails this."""
-    if not _observed(o):
+    if not observed(o):
         return False
     r = o["ram"]
     exact = list(zip(r["T"], r["P"], r["H"], strict=False)) == ORACLE.expected_measurements()
     return exact and r["md"] == ORACLE.t_measure_max_us(2, 8, 1)
-
-
-def transactions(bus: list[str]) -> list[list[tuple[int, int]]]:
-    txs: list[list[tuple[int, int]]] = []
-    cur: list[tuple[int, int]] | None = None
-    for m in bus:
-        if m == "S":
-            cur = []
-        elif m == "D":
-            if cur:
-                txs.append(cur)
-            cur = None
-        elif m.startswith("B ") and cur is not None:
-            _, mosi, miso = m.split()
-            cur.append((int(mosi, 16), int(miso, 16)))
-    return txs
-
-
-def _states(bus: list[str]) -> list[tuple[int, ...]]:
-    return [tuple(int(x, 16) for x in m.split()[1:]) for m in bus if m.startswith("M ")]
 
 
 def _clauses(o: dict) -> dict[str, bool]:
@@ -109,18 +96,19 @@ def _clauses(o: dict) -> dict[str, bool]:
         "soft_reset_written": reset_at is not None,
         "status_polled_after_reset": status_at is not None,
         "calibration_bursts_read": burst(0x88, 26) and burst(0xE1, 7),
-        "calibration_after_status": status_at is not None and calib_at is not None
-                                   and calib_at > status_at,
-        "settings_at_each_trigger": _states(o["bus"]) == [TRIGGER_STATE, TRIGGER_STATE],
-        "humidity_set_before_measuring": 0x72 in writes and 0x74 in writes
-                                        and writes.index(0x72) <= writes.index(0x74),
+        "calibration_after_status": status_at is not None
+        and calib_at is not None
+        and calib_at > status_at,
+        "settings_at_each_trigger": states(o["bus"]) == [TRIGGER_STATE, TRIGGER_STATE],
+        "humidity_set_before_measuring": 0x72 in writes
+        and 0x74 in writes
+        and writes.index(0x72) <= writes.index(0x74),
         "two_8byte_data_bursts": sum(1 for t in after if t[0][0] == 0xF7 and len(t) - 1 == 8) == 2,
         "reset_delay_at_least_2ms": bool(delays) and delays[0] >= 2000,
     }
 
 
-def L3_CLAUSES(o: dict) -> dict[str, bool]:
-    return _clauses(o)
+L3_CLAUSES = _clauses
 
 
 def L3(o: dict) -> bool:

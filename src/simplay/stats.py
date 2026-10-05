@@ -35,7 +35,8 @@ def cluster_bootstrap(
     """Percentile CI for a rate, resampling whole clusters.
 
     Mutants on the same source line are not independent, so the clusters are
-    source lines rather than mutants.
+    source lines rather than mutants.  The percentile index is truncated, which
+    is why the frozen tests pin these numbers rather than recomputing them.
     """
     clusters: dict[object, list[bool]] = {}
     for key, hit in items:
@@ -62,8 +63,9 @@ def fmt_rate(hits: int, n: int) -> str:
 
 def table(rows: Sequence[Sequence[str]], headers: Sequence[str]) -> str:
     """Left-aligned fixed-width table."""
-    widths = [max(len(str(r[i])) for r in [headers, *rows]) for i in range(len(headers))]
+    body = list(rows)
+    widths = [max(len(str(r[i])) for r in [headers, *body]) for i in range(len(headers))]
     out = ["  ".join(str(h).ljust(w) for h, w in zip(headers, widths, strict=True))]
-    for r in rows:
+    for r in body:
         out.append("  ".join(str(c).ljust(w) for c, w in zip(r, widths, strict=True)))
     return "\n".join(out)

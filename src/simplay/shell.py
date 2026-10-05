@@ -16,8 +16,14 @@ from . import analyze, sweep
 from .sensors import load
 
 RESET = "\033[0m"
-STYLES = {"dim": "\033[2m", "red": "\033[31m", "green": "\033[32m", "yellow": "\033[33m",
-          "cyan": "\033[36m", "bold": "\033[1m"}
+STYLES = {
+    "dim": "\033[2m",
+    "red": "\033[31m",
+    "green": "\033[32m",
+    "yellow": "\033[33m",
+    "cyan": "\033[36m",
+    "bold": "\033[1m",
+}
 
 
 class CommandError(Exception):
@@ -25,6 +31,8 @@ class CommandError(Exception):
 
 
 class Colours:
+    """Callable so callers write ``self.col(text, "red")`` rather than branching."""
+
     def __init__(self, on: bool):
         self.on = on
 
@@ -73,6 +81,8 @@ class Shell(cmd.Cmd):
         return self.by_id[mid]
 
     def _number(self, arg: str, default: int) -> int:
+        if not arg.strip():
+            return default
         try:
             return int(arg.strip())
         except ValueError:
@@ -105,21 +115,28 @@ class Shell(cmd.Cmd):
             "L3": "bus + config",
         }.get(c, c)
 
+    def _caught_by(self, obs: dict) -> list[str]:
+        return [c for c in self.sensor.checks if not self.sensor.mod.CHECKS[c](obs)]
+
     def _catch_line(self, obs: dict, golden: bool = False) -> str:
-        caught = [c for c in self.sensor.checks if not self.sensor.mod.CHECKS[c](obs)]
         if obs["status"] != "observed":
             return self.col(f"no observable result ({obs['status']})", "dim")
+        caught = self._caught_by(obs)
         if not caught:
-            return self.col("passed every check" if golden else "escaped every check",
-                            "green" if golden else "red")
+            return self.col(
+                "passed every check" if golden else "escaped every check",
+                "green" if golden else "red",
+            )
         return "caught by " + ", ".join(caught)
 
     def _print_run(self, row: dict, obs: dict) -> None:
         self.say()
         for line in self._source(row):
             self.say("  " + line)
-        self.say(f"    {self.dim(row['id'] + ' ' + row['cls'])} {row['orig']} -> "
-                 f"{self.col(row['repl'], 'cyan')}")
+        self.say(
+            f"    {self.dim(row['id'] + ' ' + row['cls'])} {row['orig']} -> "
+            f"{self.col(row['repl'], 'cyan')}"
+        )
         self.say()
         self.say(f"  status  {obs['status']}   uart {obs.get('uart', '')!r}")
         for line in self.sensor.readings(obs.get("ram") or {}):
@@ -136,7 +153,7 @@ class Shell(cmd.Cmd):
         self.say(f"  {self._catch_line(obs, golden=row.get('id') == 'golden')}")
 
     # -- commands ---------------------------------------------------------
-    def do_help(self, arg: str) -> None:
+    def do_help(self, arg: str = "") -> None:
         if arg:
             return super().do_help(arg)
         self.say(
@@ -153,21 +170,32 @@ class Shell(cmd.Cmd):
             "quit                leave\n"
         )
 
-    def do_golden(self, arg: str) -> None:
+    def do_golden(self, arg: str = "") -> None:
         self.say(self.dim("building and running the stock driver ..."))
         obs = sweep.run_one(self.sensor.name, None, wall=20.0)
-        self._print_run(dict(id="golden", cls="stock", file=self.sensor.mod.DRIVER, line=1,
-                             orig="", repl="", caught=[]), obs)
+        row = dict(
+            id="golden",
+            cls="stock",
+            file=self.sensor.mod.DRIVER,
+            line=1,
+            orig="",
+            repl="",
+            caught=self._caught_by(obs),
+        )
+        self._print_run(row, obs)
 
-    def do_list(self, arg: str) -> None:
+    def do_list(self, arg: str = "") -> None:
         n = self._number(arg, 40)
         self.say(f"{'id':<6}{'class':<9}{'site':<18}{'change':<18}caught by")
         for row in self.rows[:n]:
             site = f"{row['file']}:{row['line']}"
             caught = ", ".join(row.get("caught", [])) or self.dim(
-                "nothing" if row.get("status") == "observed" else row["status"])
-            self.say(f"{row['id']:<6}{row['cls']:<9}{site:<18}"
-                     f"{row['orig'] + '->' + row['repl']:<18}{caught}")
+                "nothing" if row.get("status") == "observed" else row["status"]
+            )
+            self.say(
+                f"{row['id']:<6}{row['cls']:<9}{site:<18}"
+                f"{row['orig'] + '->' + row['repl']:<18}{caught}"
+            )
 
     def do_show(self, arg: str) -> None:
         row = self._row(arg.strip())
@@ -200,18 +228,19 @@ class Shell(cmd.Cmd):
             mark = self.col("ok    ", "green") if ok else self.col("broken", "red")
             self.say(f"  {mark}  {name}")
 
-    def do_escapes(self, arg: str) -> None:
+    def do_escapes(self, arg: str = "") -> None:
         for row in self.rows:
             if row["status"] == "observed" and not row.get("nod") and not row.get("caught"):
-                self.say(f"  {row['id']} {row['file']}:{row['line']} "
-                         f"{row['orig']} -> {row['repl']}")
+                self.say(
+                    f"  {row['id']} {row['file']}:{row['line']} {row['orig']} -> {row['repl']}"
+                )
                 for line in self._source(row, context=1):
                     self.say("   " + line)
 
-    def do_stats(self, arg: str) -> None:
+    def do_stats(self, arg: str = "") -> None:
         self.say(analyze.report(self.sensor))
 
-    def do_play(self, arg: str) -> None:
+    def do_play(self, arg: str = "") -> None:
         rounds = self._number(arg, 5)
         pool = [r for r in self.rows if r["status"] == "observed" and not r.get("nod")]
         if not pool:
@@ -229,18 +258,24 @@ class Shell(cmd.Cmd):
                 self.say()
                 raise CommandError(self.col("stopping", "dim")) from None
             guessed = {c.upper() for c in shlex.split(guess.replace(",", " "))}
-            actual = {c for c in self.sensor.checks if not self.records[row["id"]][c]}
+            actual = set(self._caught_by(self.records[row["id"]]))
             hit = guessed == actual
             self.score[0] += 1
             self.score[1] += int(hit)
-            self.say("  " + self._catch_line(self.records[row["id"]])
-                     + ("   " + self.col("correct", "green") if hit else
-                        "   " + self.col("wrong", "red") + f" (it was {sorted(actual) or 'none'})"))
+            self.say(
+                "  "
+                + self._catch_line(self.records[row["id"]])
+                + (
+                    "   " + self.col("correct", "green")
+                    if hit
+                    else "   " + self.col("wrong", "red") + f" (it was {sorted(actual) or 'none'})"
+                )
+            )
 
     def do_score(self, arg: str) -> None:
         self.say(f"{self.score[1]}/{self.score[0]} guesses correct")
 
-    def do_quit(self, arg: str) -> bool:
+    def do_quit(self, arg: str = "") -> bool:
         return True
 
     do_exit = do_quit

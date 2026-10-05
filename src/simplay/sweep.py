@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import os
 import shutil
 import tempfile
 import time
@@ -23,9 +22,8 @@ def write_json(path: Path, data: dict) -> None:
 
 def scratch_dir() -> Path:
     """Prefer tmpfs: builds are small and the sweep is I/O bound."""
-    root = Path("/dev/shm") if os.path.isdir("/dev/shm") else Path(tempfile.gettempdir())
-    d = Path(tempfile.mkdtemp(prefix="simplay-", dir=root))
-    return d
+    root = Path("/dev/shm") if Path("/dev/shm").is_dir() else Path(tempfile.gettempdir())
+    return Path(tempfile.mkdtemp(prefix="simplay-", dir=root))
 
 
 def run_one(name: str, mutant: dict | None, wall: float) -> dict:
@@ -37,7 +35,16 @@ def run_one(name: str, mutant: dict | None, wall: float) -> dict:
         try:
             elf = build.compile_firmware(sensor, workdir, mutant)
         except build.BuildError as e:
-            return dict(id=(mutant or {}).get("id", "golden"), status="compile_fail", err=str(e))
+            # Same shape as an observed run: signature() and the REPL index ram
+            # and bus by key, so a failed build must carry them too.
+            return dict(
+                id=(mutant or {}).get("id", "golden"),
+                status="compile_fail",
+                uart="",
+                bus=[],
+                ram={},
+                err=str(e)[:200],
+            )
         obs = harness.observe(sensor, elf, workdir, wall=wall)
         if obs["status"] == "observed":
             obs.update({c: sensor.mod.CHECKS[c](obs) for c in sensor.mod.CHECKS})
@@ -51,8 +58,15 @@ def _job(args: tuple[str, dict, float]) -> dict:
     return run_one(*args)
 
 
-def sweep(name: str, workers: int = 8, wall: float = 8.0, limit: int | None = None,
-          out: str = "mut_raw.json", progress: bool = True, save_gold: bool = True) -> dict:
+def sweep(
+    name: str,
+    workers: int = 8,
+    wall: float = 8.0,
+    limit: int | None = None,
+    out: str = "mut_raw.json",
+    progress: bool = True,
+    save_gold: bool = True,
+) -> dict:
     sensor = load(name)
     mutants = mutgen.load(sensor)["mutants"]
     if limit:
@@ -69,7 +83,9 @@ def sweep(name: str, workers: int = 8, wall: float = 8.0, limit: int | None = No
             try:
                 r = f.result()
             except Exception as e:  # noqa: BLE001 - one bad mutant must not stop the sweep
-                r = dict(id=m["id"], status="runner_error", err=str(e)[:200])
+                r = dict(
+                    id=m["id"], status="runner_error", uart="", bus=[], ram={}, err=str(e)[:200]
+                )
             results[m["id"]] = r
             if progress:
                 print(f"  {i:4d}/{len(mutants)} {m['id']} {m['cls']:<8} {r['status']}", flush=True)

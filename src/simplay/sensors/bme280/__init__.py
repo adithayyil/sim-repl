@@ -31,6 +31,11 @@ MUTGEN = dict(
     float_literals=False,
 )
 
+# How many forced-mode rounds the firmware runs.  peer.py carries one MEAS entry
+# per round and the firmware's Tc/Pc/Hc arrays are sized by it; tests pin the two
+# against this.
+MEASUREMENTS = 2
+
 CHECKS = _c.CHECKS
 L3_CLAUSES = _c.L3_CLAUSES
 readings = _c.readings
@@ -48,15 +53,16 @@ def read_ram(s) -> dict:
         return int.from_bytes(s.read_memory(s.symbol(name) + 4 * i, 4), "little")
 
     n = u32("ndelays")
+    rounds = range(MEASUREMENTS)
     return dict(
         chip=u32("chip_id_seen"),
         md=u32("meas_delay"),
         nd=n,
-        T=[_signed(u32("Tc", i)) for i in (0, 1)],
-        P=[_signed(u32("Pc", i)) for i in (0, 1)],
-        H=[_signed(u32("Hc", i)) for i in (0, 1)],
+        T=[_signed(u32("Tc", i)) for i in rounds],
+        P=[_signed(u32("Pc", i)) for i in rounds],
+        H=[_signed(u32("Hc", i)) for i in rounds],
         rc=[_signed(u32(nm)) for nm in ("r_init", "r_set", "r_delay")]
-        + [_signed(u32("r_mode", i)) for i in (0, 1)]
-        + [_signed(u32("r_get", i)) for i in (0, 1)],
+        + [_signed(u32("r_mode", i)) for i in rounds]
+        + [_signed(u32("r_get", i)) for i in rounds],
         delays=[u32("delays", i) for i in range(min(n, 16))],
     )

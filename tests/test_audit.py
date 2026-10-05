@@ -40,9 +40,7 @@ def test_clause_ablation_is_reproducible(name: str) -> None:
 def test_stored_verdicts_are_reproduced(name: str) -> None:
     result = analyze.reproduce_check(load(name))
     assert result["mismatches"] == []
-    observed = sum(
-        1 for r in analyze.raw(load(name)).values() if r["status"] == "observed"
-    )
+    observed = sum(1 for r in analyze.raw(load(name)).values() if r["status"] == "observed")
     assert result["checked"] == observed <= result["runs"]
 
 

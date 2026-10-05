@@ -37,6 +37,13 @@ static void delay_us(uint32_t us, void *p) {
 int main(void) {
     struct bmp3_dev dev;
     struct bmp3_settings st;
+    /* `d` is deliberately left uninitialised, and main.c is deliberately frozen.
+     * At least one mutant (bmp388 m163) makes the driver pick its next register
+     * from whatever is in `d`, so its recorded SPI log is a function of the stack
+     * garbage here -- and that garbage shifts if the code size of main.c shifts.
+     * "Improvements" that only change how dev/st are zeroed (memset vs the byte
+     * loop) have already changed m163's recorded bus log.  Zero `d` as well, and
+     * re-record the corpus, if that is ever worth doing; do not do it silently. */
     struct bmp3_data d;
     USART2_CR1 = (1u << 13) | (1u << 3);
     U(GPIOA + 0x00) = (U(GPIOA + 0x00) & ~(3u << 8)) | (1u << 8);

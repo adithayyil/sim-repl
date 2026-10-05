@@ -12,6 +12,8 @@ import importlib
 from pathlib import Path
 from typing import Any
 
+from .. import spi
+
 SENSOR_NAMES = ("bme280", "bmp388")
 
 
@@ -71,7 +73,7 @@ class Sensor:
 
     # -- presentation -----------------------------------------------------
     def transactions(self, bus: list[str]) -> list[list[tuple[int, int]]]:
-        return self.mod.checks.transactions(bus)
+        return spi.transactions(bus)
 
     def readings(self, ram: dict) -> list[str]:
         return self.mod.readings(ram)

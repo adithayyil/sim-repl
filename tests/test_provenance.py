@@ -10,9 +10,12 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "PROVENANCE.json"
 
 ORIGINAL = tuple(
-    sorted(str(p.relative_to(ROOT)) for d in ("bme280", "bmp388")
-           for p in (ROOT / "src/simplay/sensors" / d).iterdir()
-           if p.is_dir() and p.name in {"firmware", "results"})
+    sorted(
+        str(p.relative_to(ROOT))
+        for d in ("bme280", "bmp388")
+        for p in (ROOT / "src/simplay/sensors" / d).iterdir()
+        if p.is_dir() and p.name in {"firmware", "results"}
+    )
 )
 
 
@@ -43,8 +46,11 @@ def test_every_third_party_file_is_listed() -> None:
         on_disk = {p.name for p in dest.iterdir() if p.is_file()} if dest.is_dir() else {dest.name}
         assert on_disk == set(entry["files"]), f"{entry['destination']} contents drifted"
         for name in entry["files"]:
-            key = (f"{entry['destination']}/{name}" if (ROOT / entry["destination"]).is_dir()
-                   else entry["destination"])
+            key = (
+                f"{entry['destination']}/{name}"
+                if (ROOT / entry["destination"]).is_dir()
+                else entry["destination"]
+            )
             assert key in listed, f"{key} is on disk but not pinned in PROVENANCE.json"
 
 

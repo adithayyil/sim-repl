@@ -1,39 +1,23 @@
-"""End-to-end tests: every command of the playground and the CLI, both sensors.
+"""Offline end-to-end tests: every command of the playground and the CLI.
 
-The offline ones run in CI. The `live` ones build and simulate, so they need
-arm-none-eabi-gcc and the Simantic engine; set SIMPLAY_LIVE=1 to include them.
+Nothing here builds or simulates; the tests that need the ARM toolchain and
+the Simantic engine live in test_live.py.
 """
 
 from __future__ import annotations
 
-import io
-import json
-import os
-import subprocess
-import sys
-from contextlib import redirect_stdout
+import re
 from pathlib import Path
 
 import pytest
 import simantic
+from helpers import drive
 
 from simplay import analyze, build, harness, mutgen, sweep
 from simplay.cli import main as cli_main
 from simplay.sensors import SENSOR_NAMES, load
-from simplay.shell import Shell
 
 ROOT = Path(__file__).resolve().parents[1]
-LIVE = bool(os.environ.get("SIMPLAY_LIVE"))
-
-
-def drive(sensor: str, script: str, stdin: str = "") -> str:
-    """Feed `script` to the playground the way a user would."""
-    shell = Shell(sensor)
-    buf = io.StringIO()
-    with redirect_stdout(buf):
-        for line in script.splitlines():
-            shell.onecmd(line)
-    return buf.getvalue()
 
 
 # -- offline: no simulator needed ------------------------------------------
@@ -41,18 +25,23 @@ def drive(sensor: str, script: str, stdin: str = "") -> str:
 def test_every_offline_command_runs(name: str) -> None:
     rows = analyze.rows(load(name))
     caught = next((r["id"] for r in rows if r.get("caught")), None)
-    out = drive(name, "\n".join([
-        "help",
-        "list 5",
-        "stats",
-        "escapes",
-        "bus",
-        "bus golden",
-        f"show {caught}",
-        f"clauses {caught}",
-        "score",
-        "nonsense",
-    ]))
+    out = drive(
+        name,
+        "\n".join(
+            [
+                "help",
+                "list 5",
+                "stats",
+                "escapes",
+                "bus",
+                "bus golden",
+                f"show {caught}",
+                f"clauses {caught}",
+                "score",
+                "nonsense",
+            ]
+        ),
+    )
     for expected in ("catch rates", "live (differ from golden)", f"{caught}"):
         assert expected in out, f"{name}: {expected!r} missing from the playground output"
 
@@ -108,6 +97,21 @@ def test_a_word_where_a_number_belongs_is_a_clean_error() -> None:
     out = drive("bme280", "list lots\nscore")
     assert "'lots' is not a number" in out
     assert "0/0 guesses correct" in out
+
+
+@pytest.mark.parametrize("name", SENSOR_NAMES)
+def test_a_bare_command_falls_back_to_its_default_count(
+    name: str, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Regression: _number() ignored its `default`, so `list` and `play` with no
+    argument died with "'' is not a number" instead of using the default."""
+    rows = analyze.rows(load(name))
+    out = drive(name, "list")
+    assert out.splitlines()[1].split()[0] == rows[0]["id"]
+    assert "is not a number" not in out
+
+    monkeypatch.setattr("builtins.input", lambda prompt="": "")
+    assert "Traceback" not in drive(name, "play")
 
 
 def test_the_game_stops_cleanly_when_input_runs_out(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -193,8 +197,11 @@ def test_golden_command_keeps_the_recording_when_the_run_fails(
     """A broken golden would turn every mutant into a live one."""
     sensor = load("bme280")
     before = (sensor.results / "gold.json").read_bytes()
-    monkeypatch.setattr(sweep, "run_one", lambda *a, **k: dict(
-        status="sim_error", uart="", bus=[], ram={}, err="rig is on fire"))
+    monkeypatch.setattr(
+        sweep,
+        "run_one",
+        lambda *a, **k: dict(status="sim_error", uart="", bus=[], ram={}, err="rig is on fire"),
+    )
     assert cli_main(["bme280", "golden"]) == 1
     assert (sensor.results / "gold.json").read_bytes() == before
 
@@ -232,10 +239,13 @@ class _FakeSim:
         return 0
 
 
-@pytest.mark.parametrize("failure, expected", [
-    (simantic.ExpectTimeout("DONE", "", 0.0), "no_completion"),
-    (ValueError("renamed API"), "sim_error"),
-])
+@pytest.mark.parametrize(
+    "failure, expected",
+    [
+        (simantic.ExpectTimeout("DONE", "", 0.0), "no_completion"),
+        (ValueError("renamed API"), "sim_error"),
+    ],
+)
 def test_only_a_timeout_counts_as_a_hang(
     monkeypatch: pytest.MonkeyPatch, failure: Exception, expected: str
 ) -> None:
@@ -247,7 +257,79 @@ def test_only_a_timeout_counts_as_a_hang(
     assert obs["status"] == expected
 
 
-# -- live: needs the ARM toolchain and the Simantic engine -------------------
+@pytest.mark.parametrize("failing", ["run_for", "read_uart", "logs"])
+def test_a_failed_read_does_not_reclassify_a_hang(
+    monkeypatch: pytest.MonkeyPatch, failing: str
+) -> None:
+    """Regression: the UART/log/RAM reads ran after a timeout too, and an API error
+    there was caught by the outer handler, turning a mutant hang into sim_error."""
+    sensor = load("bme280")
+
+    def raise_it(self, *a, **k):
+        raise RuntimeError("session already torn down")
+
+    class Hung(_FakeSim):
+        raises = simantic.ExpectTimeout("DONE", "", 0.0)
+
+    class Completed(_FakeSim):
+        raises = None
+
+        def expect(self, pattern: str, timeout: float = 30) -> None:
+            return None
+
+    monkeypatch.setattr(Hung, failing, raise_it)
+    monkeypatch.setattr(simantic, "Sim", Hung)
+    obs = harness.observe(sensor, Path("sim.elf"), Path("/tmp"), wall=0.1)
+    assert obs["status"] == "no_completion", obs
+    assert "read:" in obs["err"], obs["err"]
+
+    monkeypatch.setattr(Completed, failing, raise_it)
+    monkeypatch.setattr(simantic, "Sim", Completed)
+    assert harness.observe(sensor, Path("sim.elf"), Path("/tmp"), wall=0.1)["status"] == "sim_error"
+
+
+@pytest.mark.parametrize("name", SENSOR_NAMES)
+def test_a_failed_build_still_produces_a_complete_record(
+    monkeypatch: pytest.MonkeyPatch, name: str
+) -> None:
+    """Regression: a compile failure returned a dict without uart/bus/ram, so
+    signature() and the playground would KeyError on it."""
+    sensor = load(name)
+
+    def boom(sensor, workdir, mutant):
+        raise build.BuildError("cc: nope")
+
+    monkeypatch.setattr(build, "compile_firmware", boom)
+    row = dict(analyze.rows(sensor)[0])
+    obs = sweep.run_one(name, row, wall=1.0)
+    assert obs["status"] == "compile_fail"
+    assert set(obs) >= {"id", "status", "uart", "bus", "ram", "err"}
+    assert obs["id"] == row["id"]
+    harness.signature(obs)  # must not raise
+
+
+@pytest.mark.parametrize("name", SENSOR_NAMES)
+def test_measurement_count_matches_the_peer(name: str) -> None:
+    """read_ram() sizes its arrays from MEASUREMENTS; the peer serves one reading
+    per round, and a mismatch would fail L2 on length alone."""
+    sensor = load(name)
+    served = re.search(
+        r"^MEAS = \[(.*?)\]", sensor.peer.read_text(), re.DOTALL | re.MULTILINE
+    ).group(1)
+    assert len(re.findall(r"\(", served)) == sensor.mod.MEASUREMENTS
+
+
+@pytest.mark.parametrize("name", SENSOR_NAMES)
+def test_plausible_values_need_a_measurement(name: str) -> None:
+    """Regression: all() over an empty list is True, so a mutant that skipped the
+    measurement loop entirely passed L1 vacuously."""
+    mod = load(name).mod
+    empty = dict(status="observed", uart="OK", ram=dict(T=[], P=[], H=[], delays=[1]))
+    assert not mod.CHECKS["L1"](empty)
+    one_short = {**empty["ram"], "T": [0] * (mod.MEASUREMENTS - 1)}
+    assert not mod.CHECKS["L1"](dict(status="observed", uart="OK", ram=one_short))
+
+
 def test_peers_stay_inside_ironpython() -> None:
     """The SPI peers run inside Renode's IronPython 2.7, so a py3-only construct
     would fail at simulation time with a stack trace instead of a clear error."""
@@ -261,62 +343,8 @@ def test_peers_stay_inside_ironpython() -> None:
             if isinstance(node, ast.FunctionDef):
                 a = node.args
                 assert not (a.posonlyargs or a.kwonlyargs)
-                assert all(x.annotation is None for x in
-                           [*a.args, *a.posonlyargs, *a.kwonlyargs])
+                assert all(x.annotation is None for x in [*a.args, *a.posonlyargs, *a.kwonlyargs])
                 assert node.returns is None
         for banned in ("yield from", "nonlocal ", ":="):
             assert banned not in peer, f"{name} peer uses {banned!r}"
         assert peer.startswith("#"), f"{name} peer should say what it is"
-
-
-@pytest.mark.live
-@pytest.mark.skipif(not LIVE, reason="set SIMPLAY_LIVE=1")
-@pytest.mark.parametrize("name", SENSOR_NAMES)
-def test_sweep_writes_a_recording_the_analysis_can_read(name: str, tmp_path: Path) -> None:
-    """Regression: sweep() itself had no test; it is what produces every result."""
-    out = tmp_path / "slice.json"
-    runs = sweep.sweep(name, workers=2, wall=12.0, limit=3, out=str(out),
-                       progress=False, save_gold=False)
-    assert len(runs) == 3
-    assert json.loads(out.read_text()).keys() == runs.keys()
-    assert load(name).results.joinpath("gold.json").exists(), "save_gold=False must not write"
-    for mid, obs in runs.items():
-        assert obs["id"] == mid
-        assert obs["status"] == "observed", obs.get("err")
-
-
-@pytest.mark.live
-@pytest.mark.skipif(not LIVE, reason="set SIMPLAY_LIVE=1")
-@pytest.mark.parametrize("name", SENSOR_NAMES)
-def test_golden_run_passes_every_check(name: str) -> None:
-    obs = sweep.run_one(name, None, wall=20.0)
-    assert obs["status"] == "observed", obs.get("err")
-    assert all(sweep.load(name).mod.CHECKS[c](obs) for c in ("L0", "L1", "L2", "L3"))
-    assert obs["uart"] == "OK\nDONE"
-
-
-@pytest.mark.live
-@pytest.mark.skipif(not LIVE, reason="set SIMPLAY_LIVE=1")
-def test_golden_command_prints_the_stock_driver_source() -> None:
-    out = drive("bme280", "golden")
-    first = load("bme280").source_file("bme280.c").read_text().splitlines()[0]
-    assert first.strip() in out, "golden should show the stock driver it built"
-    assert "passed every check" in out
-
-
-@pytest.mark.live
-@pytest.mark.skipif(not LIVE, reason="set SIMPLAY_LIVE=1")
-def test_run_command_reproduces_the_recorded_verdict() -> None:
-    name = "bmp388"
-    row = next(r for r in analyze.rows(load(name)) if r.get("caught") == ["L2"])
-    out = drive(name, f"run {row['id']}")
-    assert "caught by L2" in out
-
-
-@pytest.mark.live
-@pytest.mark.skipif(not LIVE, reason="set SIMPLAY_LIVE=1")
-def test_installed_console_script_works() -> None:
-    r = subprocess.run([sys.executable, "-m", "simplay.cli", "bme280", "analyze"],
-                       capture_output=True, text=True, cwd=ROOT)
-    assert r.returncode == 0, r.stderr[-400:]
-    assert "catch rates over live mutants" in r.stdout

@@ -32,7 +32,9 @@ static int8_t spi_write(uint8_t reg, const uint8_t *data, uint32_t len, void *p)
     cs_high(); return 0;
 }
 static void delay_us(uint32_t us, void *p) {
-    (void)p; if (ndelays < 16) delays[ndelays] = us; ndelays++;
+    (void)p;
+    if (ndelays < 16) { delays[ndelays] = us; }
+    ndelays++;
 }
 
 int main(void) {

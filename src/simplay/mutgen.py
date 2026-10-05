@@ -17,6 +17,7 @@ from .sensors import Sensor
 
 KEYWORDS = {"return", "case", "else", "do", "sizeof", "goto"}
 
+
 def token_re(*, floats: bool) -> re.Pattern:
     """Operator and literal tokens.
 
@@ -25,19 +26,22 @@ def token_re(*, floats: bool) -> re.Pattern:
     """
     leading = r"\d+\.\d*(?:[eE][-+]?\d+)?[fF]?" if floats else None
     parts = [leading] if leading else []
-    parts += [
-        r"0[xX][0-9a-fA-F]+[uUlL]*",
-        r"\d+[uUlL]*",
-        r"[A-Za-z_]\w*",
-        r"<<=|>>=|<<|>>|<=|>=|==|!=|&&|\|\||->|\+\+|--|\+=|-=|\*=|/=|&=|\|=|\^=|%=",
-        r"[-+*/%&|^~!<>=?:;,.(){}\[\]]",
-    ]
+    parts.extend(
+        [
+            r"0[xX][0-9a-fA-F]+[uUlL]*",
+            r"\d+[uUlL]*",
+            r"[A-Za-z_]\w*",
+            r"<<=|>>=|<<|>>|<=|>=|==|!=|&&|\|\||->|\+\+|--|\+=|-=|\*=|/=|&=|\|=|\^=|%=",
+            r"[-+*/%&|^~!<>=?:;,.(){}\[\]]",
+        ]
+    )
     return re.compile("|".join(parts))
+
 
 DEFINE = re.compile(
     r"^#define\s+(?P<name>%(prefix)s[A-Z0-9_]+)\s+\(?U?INT(?:8|16|32)_C\((?P<args>[^)]*)\)"
     r"|^#define\s+(?P<name2>%(prefix)s[A-Z0-9_]+)\s+\((?P<hex>0x[0-9A-Fa-f]+)\)",
-    re.M,
+    re.MULTILINE,
 )
 
 
@@ -47,7 +51,7 @@ def strip_comments(src: str) -> str:
     def blank(m: re.Match) -> str:
         return re.sub(r"[^\n]", " ", m.group(0))
 
-    src = re.sub(r"/\*.*?\*/", blank, src, flags=re.S)
+    src = re.sub(r"/\*.*?\*/", blank, src, flags=re.DOTALL)
     return re.sub(r"//[^\n]*", blank, src)
 
 
@@ -65,6 +69,8 @@ def int_repls(token: str) -> list[str]:
     hexish = body.lower().startswith("0x")
     v = int(body, 16) if hexish else int(body)
     fmt = hex if hexish else str
+    # NB: for v == 0 the first two candidates are both "1".  De-duplicating them
+    # would reweight the sample and change every recorded mutant, so they stay.
     return [fmt(v + 1) + suffix, fmt(v ^ 1) + suffix, fmt(v - 1) + suffix if v > 0 else "(-1)"]
 
 
@@ -117,17 +123,28 @@ def sites_in(sensor: Sensor) -> list[dict]:
             cls, cand = "CONST", float_repls(tok)
         if cls:
             sites.append(
-                dict(file=cfg["driver"], start=start, end=end, line=line,
-                     cls=cls, orig=tok, cand=cand)
+                dict(
+                    file=cfg["driver"],
+                    start=start,
+                    end=end,
+                    line=line,
+                    cls=cls,
+                    orig=tok,
+                    cand=cand,
+                )
             )
 
     defs = sensor.source_file(cfg["defs"])
     src = defs.read_text()
-    pattern = re.compile(DEFINE.pattern % {"prefix": cfg["define_prefix"]}, re.M)
+    pattern = re.compile(DEFINE.pattern % {"prefix": re.escape(cfg["define_prefix"])}, re.MULTILINE)
     for m in pattern.finditer(src):
-        body, body_start = (m.group("args"), m.start("args")) if m.group("args") else (
-            m.group("hex"),
-            m.start("hex"),
+        body, body_start = (
+            (m.group("args"), m.start("args"))
+            if m.group("args")
+            else (
+                m.group("hex"),
+                m.start("hex"),
+            )
         )
         for n in re.finditer(r"0[xX][0-9a-fA-F]+|\d+", body):
             sites.append(
@@ -151,10 +168,7 @@ def generate(sensor: Sensor, n: int, seed: int) -> dict:
     mutants = [
         dict(
             id=f"m{k:03d}",
-            **{
-                key: sites[i][key]
-                for key in ("file", "start", "end", "line", "cls", "orig")
-            },
+            **{key: sites[i][key] for key in ("file", "start", "end", "line", "cls", "orig")},
             repl=rng.choice(sites[i]["cand"]),
         )
         for k, i in enumerate(picked)
