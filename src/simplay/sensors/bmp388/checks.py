@@ -101,10 +101,13 @@ def _clauses(o: dict) -> dict[str, bool]:
     return {
         "chip_id_read_first": bool(first) and first[0][0] == 0x80 and len(first) == 3,
         "only_writable_registers_written": bool(txs) and write_targets_ok(),
-        "soft_reset_after_status_read": reset_at not in (None, 0) and txs[reset_at - 1][0][0] == 0x83,
-        "one_21byte_calibration_burst": sum(1 for t in after if t[0][0] == 0xB1 and len(t) - 2 == 21) == 1,
+        "soft_reset_after_status_read": reset_at not in (None, 0)
+                                       and txs[reset_at - 1][0][0] == 0x83,
+        "one_21byte_calibration_burst":
+            sum(1 for t in after if t[0][0] == 0xB1 and len(t) - 2 == 21) == 1,
         "settings_at_each_trigger": len(states) == 2
-        and all(s[:3] == (0x0B, 0x02, 0x04) and (s[3] & 0x33) == 0x13 for s in states),
+        and all(len(s) >= 4 and s[:3] == (0x0B, 0x02, 0x04) and (s[3] & 0x33) == 0x13
+                for s in states),
         "two_6byte_data_bursts": sum(1 for t in after if t[0][0] == 0x84 and len(t) - 2 == 6) == 2,
         "reset_delay_at_least_2ms": bool(delays) and delays[0] >= 2000,
     }

@@ -11,14 +11,17 @@ import cmd
 import random
 import shlex
 import sys
-from pathlib import Path
 
-from . import analyze, build, harness, mutgen, sweep
+from . import analyze, sweep
 from .sensors import load
 
 RESET = "\033[0m"
 STYLES = {"dim": "\033[2m", "red": "\033[31m", "green": "\033[32m", "yellow": "\033[33m",
           "cyan": "\033[36m", "bold": "\033[1m"}
+
+
+class CommandError(Exception):
+    """A bad argument: report it and keep the prompt."""
 
 
 class Colours:
@@ -44,6 +47,13 @@ class Shell(cmd.Cmd):
         self.by_id = {r["id"]: r for r in self.rows}
         self.gold = analyze.gold(self.sensor)
 
+    def onecmd(self, line: str) -> bool | None:
+        try:
+            return super().onecmd(line)
+        except CommandError as exc:
+            self.say(self.col(str(exc), "red"))
+            return False
+
     # -- helpers ----------------------------------------------------------
     def _load_records(self) -> dict:
         try:
@@ -59,11 +69,17 @@ class Shell(cmd.Cmd):
 
     def _row(self, mid: str) -> dict:
         if mid not in self.by_id:
-            raise SystemExit(self.col(f"no mutant {mid}", "red"))
+            raise CommandError(self.col(f"no mutant {mid}", "red"))
         return self.by_id[mid]
 
+    def _number(self, arg: str, default: int) -> int:
+        try:
+            return int(arg.strip())
+        except ValueError:
+            raise CommandError(self.col(f"{arg.strip()!r} is not a number", "red")) from None
+
     def _source(self, row: dict, context: int = 3) -> list[str]:
-        lines = self.sensor.path(row["file"]).read_text().splitlines()
+        lines = self.sensor.source_file(row["file"]).read_text().splitlines()
         lo = max(1, row["line"] - context)
         out = []
         for n in range(lo, min(len(lines), row["line"] + context) + 1):
@@ -89,12 +105,13 @@ class Shell(cmd.Cmd):
             "L3": "bus + config",
         }.get(c, c)
 
-    def _catch_line(self, obs: dict) -> str:
+    def _catch_line(self, obs: dict, golden: bool = False) -> str:
         caught = [c for c in self.sensor.checks if not self.sensor.mod.CHECKS[c](obs)]
         if obs["status"] != "observed":
             return self.col(f"no observable result ({obs['status']})", "dim")
         if not caught:
-            return self.col("escaped every check", "red")
+            return self.col("passed every check" if golden else "escaped every check",
+                            "green" if golden else "red")
         return "caught by " + ", ".join(caught)
 
     def _print_run(self, row: dict, obs: dict) -> None:
@@ -116,7 +133,7 @@ class Shell(cmd.Cmd):
         if clauses and not self.sensor.mod.CHECKS["L3"](obs):
             broken = [k for k, v in clauses.items() if not v]
             self.say(f"    L3 clauses failed: {self.col(', '.join(broken), 'red')}")
-        self.say(f"  {self._catch_line(obs)}")
+        self.say(f"  {self._catch_line(obs, golden=row.get('id') == 'golden')}")
 
     # -- commands ---------------------------------------------------------
     def do_help(self, arg: str) -> None:
@@ -143,7 +160,7 @@ class Shell(cmd.Cmd):
                              orig="", repl="", caught=[]), obs)
 
     def do_list(self, arg: str) -> None:
-        n = int(arg) if arg.strip() else 40
+        n = self._number(arg, 40)
         self.say(f"{'id':<6}{'class':<9}{'site':<18}{'change':<18}caught by")
         for row in self.rows[:n]:
             site = f"{row['file']}:{row['line']}"
@@ -167,7 +184,9 @@ class Shell(cmd.Cmd):
         mid = arg.strip()
         obs = self.gold if mid in ("", "golden") else self.records.get(mid)
         if obs is None:
-            raise SystemExit(self.col(f"no recorded run for {mid}", "red"))
+            raise CommandError(self.col(f"no recorded run for {mid}", "red"))
+        if obs["status"] != "observed":
+            raise CommandError(self.col(f"{mid or 'golden'} is {obs['status']}", "red"))
         self.say(f"{mid or 'golden'}  {len(obs['bus'])} log lines")
         self.say()
         for i, line in enumerate(self.sensor.transactions(obs["bus"])):
@@ -176,14 +195,16 @@ class Shell(cmd.Cmd):
     def do_clauses(self, arg: str) -> None:
         obs = self.records.get(arg.strip())
         if obs is None:
-            raise SystemExit(self.col(f"no recorded run for {arg.strip()}", "red"))
+            raise CommandError(self.col(f"no recorded run for {arg.strip()}", "red"))
         for name, ok in self.sensor.l3_clauses(obs).items():
-            self.say(f"  {self.col('ok    ', 'green') if ok else self.col('broken', 'red')}  {name}")
+            mark = self.col("ok    ", "green") if ok else self.col("broken", "red")
+            self.say(f"  {mark}  {name}")
 
     def do_escapes(self, arg: str) -> None:
         for row in self.rows:
             if row["status"] == "observed" and not row.get("nod") and not row.get("caught"):
-                self.say(f"  {row['id']} {row['file']}:{row['line']} {row['orig']} -> {row['repl']}")
+                self.say(f"  {row['id']} {row['file']}:{row['line']} "
+                         f"{row['orig']} -> {row['repl']}")
                 for line in self._source(row, context=1):
                     self.say("   " + line)
 
@@ -191,10 +212,10 @@ class Shell(cmd.Cmd):
         self.say(analyze.report(self.sensor))
 
     def do_play(self, arg: str) -> None:
-        rounds = int(arg) if arg.strip() else 5
+        rounds = self._number(arg, 5)
         pool = [r for r in self.rows if r["status"] == "observed" and not r.get("nod")]
         if not pool:
-            raise SystemExit(self.col("no recorded runs; run a sweep first", "red"))
+            raise CommandError(self.col("no recorded runs; run a sweep first", "red"))
         for _ in range(rounds):
             row = self.rng.choice(pool)
             self.say()
@@ -202,7 +223,11 @@ class Shell(cmd.Cmd):
             for line in self._source(row):
                 self.say(line)
             self.say(f"  {row['orig']} -> {self.col(row['repl'], 'cyan')}")
-            guess = input("  which levels catch it? [e.g. L2 L3, or none] ").strip().upper()
+            try:
+                guess = input("  which levels catch it? [e.g. L2 L3, or none] ").strip().upper()
+            except (EOFError, KeyboardInterrupt):
+                self.say()
+                raise CommandError(self.col("stopping", "dim")) from None
             guessed = {c.upper() for c in shlex.split(guess.replace(",", " "))}
             actual = {c for c in self.sensor.checks if not self.records[row["id"]][c]}
             hit = guessed == actual

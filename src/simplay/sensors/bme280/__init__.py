@@ -7,7 +7,8 @@ BST-BME280-DS002 rev 1.23; its trim values and raw ADC readings are made up.
 
 from __future__ import annotations
 
-from . import checks as _c, oracle as _oracle
+from . import checks as _c
+from . import oracle as _oracle
 
 PART = "BME280"
 BLURB = "Bosch BME280_SensorAPI, fixed-point compensation"

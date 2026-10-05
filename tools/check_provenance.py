@@ -28,14 +28,16 @@ def fetch(url: str) -> bytes:
 def upstream_bytes(entry: dict) -> dict[str, bytes]:
     """Map destination-relative file name -> upstream content."""
     if entry["component"] == "renode/renode":
-        url = f"{entry['url'].replace('github.com', 'raw.githubusercontent.com')}/{entry['commit']}/{entry['path_in_repo']}"
+        raw = entry["url"].replace("github.com", "raw.githubusercontent.com")
+        url = f"{raw}/{entry['commit']}/{entry['path_in_repo']}"
         return {entry["files"][0]: fetch(url)}
     tar = fetch(f"https://codeload.github.com/{entry['component']}/tar.gz/{entry['commit']}")
     out: dict[str, bytes] = {}
     with tarfile.open(fileobj=BytesIO(tar)) as tf:
         for member in tf.getmembers():
             name = Path(member.name).name
-            if member.isfile() and name in entry["files"] and "/" + name not in member.name:
+            # GitHub archives are "<repo>-<sha>/<path>"; take only the repo root.
+            if member.isfile() and member.name.count("/") == 1 and name in entry["files"]:
                 out[name] = tf.extractfile(member).read()
     return out
 

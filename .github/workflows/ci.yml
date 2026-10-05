@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: lint
+        run: uvx ruff check src tests tools
+      - name: tests
+        # Offline: the recorded sweeps, the audit reproduction and the vendored
+        # digests. Re-simulating needs arm-none-eabi-gcc and the Simantic engine.
+        run: uv run pytest -q -o addopts=""
+      - name: provenance
+        run: uv run tools/check_provenance.py

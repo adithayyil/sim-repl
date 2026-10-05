@@ -8,6 +8,7 @@ and the seed is recorded next to the mutants.
 
 from __future__ import annotations
 
+import json
 import random
 import re
 from pathlib import Path
@@ -76,7 +77,7 @@ def float_repls(token: str) -> list[str]:
 def sites_in(sensor: Sensor) -> list[dict]:
     """Every mutation site in the driver and its register defines."""
     cfg = sensor.mutgen
-    driver = sensor.source(cfg["driver"])
+    driver = sensor.source_file(cfg["driver"])
     code = strip_comments(driver.read_text())
     toks = [
         (m.start(), m.end(), m.group(0), _kind(m.group(0)))
@@ -100,7 +101,8 @@ def sites_in(sensor: Sensor) -> list[dict]:
         if tok in ("==", "!="):
             cls, cand = "ROR", ["!=" if tok == "==" else "=="]
         elif tok in ("<", "<=", ">", ">="):
-            cls, cand = "ROR", {"<": ["<=", ">="], "<=": ["<", ">"], ">": [">=", "<="], ">=": [">", "<"]}[tok]
+            swaps = {"<": ["<=", ">="], "<=": ["<", ">"], ">": [">=", "<="], ">=": [">", "<"]}
+            cls, cand = "ROR", swaps[tok]
         elif tok in ("+", "-") and binary:
             cls, cand = "AOR", ["-" if tok == "+" else "+"]
         elif tok in ("<<", ">>"):
@@ -115,10 +117,11 @@ def sites_in(sensor: Sensor) -> list[dict]:
             cls, cand = "CONST", float_repls(tok)
         if cls:
             sites.append(
-                dict(file=cfg["driver"], start=start, end=end, line=line, cls=cls, orig=tok, cand=cand)
+                dict(file=cfg["driver"], start=start, end=end, line=line,
+                     cls=cls, orig=tok, cand=cand)
             )
 
-    defs = sensor.source(cfg["defs"])
+    defs = sensor.source_file(cfg["defs"])
     src = defs.read_text()
     pattern = re.compile(DEFINE.pattern % {"prefix": cfg["define_prefix"]}, re.M)
     for m in pattern.finditer(src):
@@ -160,8 +163,6 @@ def generate(sensor: Sensor, n: int, seed: int) -> dict:
 
 
 def save(sensor: Sensor, spec: dict, path: Path | None = None) -> Path:
-    import json
-
     out = path or (sensor.results / "mutants.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(spec, indent=1))
@@ -169,6 +170,4 @@ def save(sensor: Sensor, spec: dict, path: Path | None = None) -> Path:
 
 
 def load(sensor: Sensor) -> dict:
-    import json
-
     return json.loads((sensor.results / "mutants.json").read_text())

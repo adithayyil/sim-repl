@@ -18,6 +18,24 @@ HEADLINES = {
 }
 
 
+# The clause ablation behind the published reading of L3: its strength is not
+# spread over the clauses, it sits in one scenario-state check.
+ABLATION = {
+    "bme280": dict(l3=44, strongest="settings_at_each_trigger", alone=33, drop_one=23),
+    "bmp388": dict(l3=54, strongest="settings_at_each_trigger", alone=38, drop_one=16),
+}
+
+
+@pytest.mark.parametrize("name", SENSOR_NAMES)
+def test_clause_ablation_is_reproducible(name: str) -> None:
+    got = analyze.ablate(load(name))
+    want = ABLATION[name]
+    assert got["l3"] == want["l3"]
+    assert got["strongest_clause"] == want["strongest"]
+    assert got["strongest_alone"] == want["alone"]
+    assert got["clauses"][want["strongest"]]["drop_one_loses"] == want["drop_one"]
+
+
 @pytest.mark.parametrize("name", SENSOR_NAMES)
 def test_stored_verdicts_are_reproduced(name: str) -> None:
     result = analyze.reproduce_check(load(name))

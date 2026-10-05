@@ -35,9 +35,14 @@ class Sensor:
     def path(self, *parts: str) -> Path:
         return self.root.joinpath(*parts)
 
-    def source(self, name: str) -> Path:
-        """A vendored driver file, by the name the mutants refer to."""
-        return self.root / "vendor" / name
+    def source_file(self, name: str) -> Path:
+        """Resolve a file named by a mutant: driver files live in vendor/.
+
+        Mutants refer to sources by bare name ("bmp3.c"), so anything that reads
+        a mutant's ``file`` field has to go through here.
+        """
+        vendored = self.root / "vendor" / name
+        return vendored if vendored.exists() else self.path(name)
 
     @property
     def results(self) -> Path:
@@ -58,9 +63,6 @@ class Sensor:
         """Check levels in reporting order (L2x is historical, never reported)."""
         return ("L0", "L1", "L2", "L3")
 
-    def verdicts(self, obs: dict) -> dict[str, bool]:
-        return {name: self.mod.CHECKS[name](obs) for name in self.checks}
-
     def l3_clauses(self, obs: dict) -> dict[str, bool]:
         """Per-clause results of the bus check, for explaining a verdict."""
         if obs.get("status") != "observed":
@@ -79,9 +81,6 @@ class Sensor:
 
     def decode_tx(self, tx: list[tuple[int, int]]) -> str:
         return self.mod.decode_tx(tx)
-
-    def prereg(self) -> str:
-        return (self.root / "PREREG.md").read_text()
 
 
 def load(name: str) -> Sensor:

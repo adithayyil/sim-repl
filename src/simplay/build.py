@@ -25,7 +25,7 @@ def apply_mutant(sensor: Sensor, workdir: Path, mutant: dict | None) -> None:
     """Copy the driver + firmware into `workdir`, applying `mutant` to the driver."""
     workdir.mkdir(parents=True, exist_ok=True)
     for name in sensor.vendor:
-        shutil.copy(sensor.source(name), workdir / name)
+        shutil.copy(sensor.source_file(name), workdir / name)
     for name in sensor.extra_sources:
         shutil.copy(sensor.path("firmware", name), workdir / name)
     shutil.copy(sensor.path("firmware", sensor.firmware_main), workdir / sensor.firmware_main)
@@ -72,9 +72,10 @@ def compile_firmware(sensor: Sensor, workdir: Path, mutant: dict | None = None) 
 def write_repl(sensor: Sensor, workdir: Path) -> Path:
     """Renode platform file: the STM32F4 with the synthetic peer on PA4 / SPI1."""
     platform = sensor.repl.read_text()
+    peer = f"{sensor.name}0"
     stanza = (
-        f'\nbme0: SPI.ScriptedSpiSlave @ spi1\n    file: "{sensor.peer}"\n'
-        "\ngpioPortA:\n    4 -> bme0@0\n"
+        f'\n{peer}: SPI.ScriptedSpiSlave @ spi1\n    file: "{sensor.peer}"\n'
+        f"\ngpioPortA:\n    4 -> {peer}@0\n"
     )
     out = workdir / "stm32f4.repl"
     out.write_text(platform + stanza)

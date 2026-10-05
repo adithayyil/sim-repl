@@ -36,7 +36,7 @@ def test_regenerated_mutants_match_the_recorded_sample(name: str) -> None:
 def test_every_mutant_applies_to_the_pinned_source(name: str) -> None:
     sensor = load(name)
     for m in mutgen.load(sensor)["mutants"]:
-        src = sensor.source(m["file"]).read_text()
+        src = sensor.source_file(m["file"]).read_text()
         assert src[m["start"] : m["end"]] == m["orig"], m["id"]
 
 

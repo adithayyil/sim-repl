@@ -14,6 +14,13 @@ from . import build, harness, mutgen
 from .sensors import load
 
 
+def write_json(path: Path, data: dict) -> None:
+    """Write a recording in one go: a sweep killed mid-write must not truncate it."""
+    tmp = path.with_suffix(path.suffix + ".partial")
+    tmp.write_text(json.dumps(data))
+    tmp.replace(path)
+
+
 def scratch_dir() -> Path:
     """Prefer tmpfs: builds are small and the sweep is I/O bound."""
     root = Path("/dev/shm") if os.path.isdir("/dev/shm") else Path(tempfile.gettempdir())
@@ -52,7 +59,7 @@ def sweep(name: str, workers: int = 8, wall: float = 8.0, limit: int | None = No
         mutants = mutants[:limit]
     gold = run_one(name, None, wall=max(wall, 20.0))
     if save_gold:
-        (sensor.results / "gold.json").write_text(json.dumps(gold))
+        write_json(sensor.results / "gold.json", gold)
     results: dict[str, dict] = {}
     t0 = time.time()
     with ProcessPoolExecutor(max_workers=workers) as ex:
@@ -68,7 +75,7 @@ def sweep(name: str, workers: int = 8, wall: float = 8.0, limit: int | None = No
                 print(f"  {i:4d}/{len(mutants)} {m['id']} {m['cls']:<8} {r['status']}", flush=True)
     out_path = Path(out)
     path = out_path if out_path.is_absolute() else sensor.results / out
-    path.write_text(json.dumps(results))
+    write_json(path, dict(sorted(results.items())))
     if progress:
         print(f"wrote {path} in {time.time() - t0:.0f}s")
     return results

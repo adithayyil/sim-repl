@@ -9,7 +9,8 @@ from __future__ import annotations
 
 import struct
 
-from . import checks as _c, oracle as _oracle
+from . import checks as _c
+from . import oracle as _oracle
 
 PART = "BMP388"
 BLURB = "Bosch BMP3_SensorAPI, floating-point compensation"

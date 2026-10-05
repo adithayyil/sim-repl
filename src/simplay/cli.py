@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import sys
 import tempfile
 from pathlib import Path
 
@@ -32,10 +33,12 @@ def main(argv: list[str] | None = None) -> int:
     a = sub.add_parser("analyze", help="catch-rate table from recorded runs (no simulation)")
     a.add_argument("--raw", default="mut_raw.json")
 
+    sub.add_parser("ablate", help="leave-one-clause-out catch rates for L3 (no simulation)")
+
     v = sub.add_parser("verify", help="recompute stored verdicts and diff them")
     v.add_argument("--live", action="store_true",
                    help="also re-simulate the first --limit mutants and diff against the recording")
-    v.add_argument("--limit", type=int, default=25)
+    v.add_argument("--limit", type=int, default=25, help="mutants to re-simulate; 0 for all")
     v.add_argument("-j", "--workers", type=int, default=8)
     v.add_argument("--wall", type=float, default=8.0)
 
@@ -51,12 +54,17 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.cmd == "sweep":
-        sweep.sweep(args.sensor, workers=args.workers, wall=args.wall, limit=args.limit, out=args.out,
+        sweep.sweep(args.sensor, workers=args.workers, wall=args.wall, limit=args.limit,
+                    out=args.out,
                     save_gold=args.limit is None)
         return 0
 
     if args.cmd == "analyze":
         print(analyze.report(sensor, args.raw))
+        return 0
+
+    if args.cmd == "ablate":
+        print(analyze.ablate_report(sensor))
         return 0
 
     if args.cmd == "verify":
@@ -66,20 +74,30 @@ def main(argv: list[str] | None = None) -> int:
                   f"{len(r['mismatches'])} verdict mismatches {r['mismatches'][:8]}")
         print("repeat sweep:", json.dumps(sweep.repeat_agree(args.sensor)))
         if args.live:
+            limit = args.limit or None
             tmp = Path(tempfile.mkdtemp(prefix="simplay-live-")) / "live_check.json"
-            runs = sweep.sweep(args.sensor, workers=args.workers, wall=args.wall,
-                               limit=args.limit, out=str(tmp), progress=False, save_gold=False)
-            diff = analyze.diff_runs(sensor, runs, complete=args.limit is None)
-            print(f"live rerun of {len(runs)} mutants against mut_raw.json: {len(diff)} field differences")
+            try:
+                runs = sweep.sweep(args.sensor, workers=args.workers, wall=args.wall,
+                                   limit=limit, out=str(tmp), progress=False, save_gold=False)
+            finally:
+                shutil.rmtree(tmp.parent, ignore_errors=True)
+            diff = analyze.diff_runs(sensor, runs, complete=limit is None)
+            print(f"live rerun of {len(runs)} mutants against mut_raw.json: "
+                  f"{len(diff)} field differences")
             for d in diff[:10]:
                 print("  ", d)
-            shutil.rmtree(tmp.parent, ignore_errors=True)
         return 0
 
     if args.cmd == "golden":
         obs = sweep.run_one(args.sensor, None, wall=20.0)
-        (sensor.results / "gold.json").write_text(json.dumps(obs))
         print(f"status {obs['status']}  uart {obs['uart']!r}")
+        if obs["status"] != "observed":
+            # Every rate in this repo is measured against gold.json; recording a
+            # broken golden would silently turn every mutant into a "live" one.
+            print(f"golden did not complete ({obs.get('err') or 'no DONE'}); "
+                  f"gold.json left alone", file=sys.stderr)
+            return 1
+        (sensor.results / "gold.json").write_text(json.dumps(obs))
         for line in sensor.readings(obs["ram"]):
             print("  measured", line)
         for line in sensor.expected_readings():
@@ -96,3 +114,7 @@ def main(argv: list[str] | None = None) -> int:
 
     p.print_help()
     return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

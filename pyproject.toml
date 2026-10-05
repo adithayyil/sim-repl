@@ -31,6 +31,11 @@ line-length = 100
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "SIM"]
 
+[tool.ruff.lint.per-file-ignores]
+# The SPI peers run inside Renode's IronPython 2.7, where compact one-liners,
+# %-formatting and no f-strings are the readable style.
+"src/simplay/sensors/*/peer.py" = ["E501", "E701", "E702", "SIM102", "UP031"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = ["live: needs the ARM toolchain and the Simantic engine"]

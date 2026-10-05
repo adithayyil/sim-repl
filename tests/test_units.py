@@ -23,7 +23,7 @@ def test_mcnemar_is_symmetric_and_small_for_a_real_difference() -> None:
 
 def test_cluster_bootstrap_respects_clusters() -> None:
     one_line = [("c.c", 1, True)] * 20
-    lo, hi = cluster_bootstrap([((f, l), h) for f, l, h in one_line], rounds=500)
+    lo, hi = cluster_bootstrap([((f, ln), h) for f, ln, h in one_line], rounds=500)
     assert lo == hi == 1.0
     lo, hi = cluster_bootstrap([(("c.c", i), i % 2 == 0) for i in range(20)], rounds=500)
     assert lo < 0.5 < hi

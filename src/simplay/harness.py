@@ -29,7 +29,7 @@ def observe(
     gets there is recorded as `no_completion` rather than failing the run, so
     hangs stay countable instead of being lost.
     """
-    from simantic import Sim
+    from simantic import ExpectTimeout, Sim
 
     out: dict = {"status": "observed", "uart": "", "bus": [], "ram": {}, "err": None}
     try:
@@ -42,8 +42,11 @@ def observe(
         ) as s:
             try:
                 s.expect("DONE", timeout=wall)
-            except Exception:
+            except ExpectTimeout:
                 out["status"] = "no_completion"
+            except Exception as e:  # noqa: BLE001 - an API failure is not a mutant hang
+                out["status"] = "sim_error"
+                out["err"] = f"expect: {type(e).__name__}: {e}"[:200]
             s.run_for(0.001)
             out["uart"] = s.read_uart(from_start=True).replace("\r", "").strip()
             out["bus"] = _bus_lines(s.logs(from_start=True))
@@ -59,4 +62,5 @@ def signature(obs: dict) -> tuple:
 
     Two runs with the same signature are indistinguishable from outside the DUT.
     """
-    return (obs["uart"], tuple(obs["bus"]), tuple(sorted((k, str(v)) for k, v in obs["ram"].items())))
+    ram = tuple(sorted((k, str(v)) for k, v in obs["ram"].items()))
+    return (obs["uart"], tuple(obs["bus"]), ram)

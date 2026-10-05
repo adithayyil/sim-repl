@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import math
 import random
-from collections.abc import Callable, Iterable, Sequence
+from collections.abc import Sequence
 
 
 def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
@@ -53,11 +53,6 @@ def cluster_bootstrap(
     return (rates[int(0.025 * rounds)], rates[int(0.975 * rounds)])
 
 
-def rate_table(rows: Iterable[dict], field: str, pop: Sequence[dict]) -> tuple[int, int]:
-    hits = sum(1 for r in pop if r[field])
-    return hits, len(pop)
-
-
 def fmt_rate(hits: int, n: int) -> str:
     if not n:
         return "   -/-"
@@ -72,7 +67,3 @@ def table(rows: Sequence[Sequence[str]], headers: Sequence[str]) -> str:
     for r in rows:
         out.append("  ".join(str(c).ljust(w) for c, w in zip(r, widths, strict=True)))
     return "\n".join(out)
-
-
-def paired(flags: Callable[[dict], bool]) -> Callable[[Sequence[dict]], tuple[int, int]]:
-    return lambda pop: (sum(1 for r in pop if flags(r)), len(pop))

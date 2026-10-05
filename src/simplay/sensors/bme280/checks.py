@@ -109,9 +109,11 @@ def _clauses(o: dict) -> dict[str, bool]:
         "soft_reset_written": reset_at is not None,
         "status_polled_after_reset": status_at is not None,
         "calibration_bursts_read": burst(0x88, 26) and burst(0xE1, 7),
-        "calibration_after_status": status_at is not None and calib_at is not None and calib_at > status_at,
+        "calibration_after_status": status_at is not None and calib_at is not None
+                                   and calib_at > status_at,
         "settings_at_each_trigger": _states(o["bus"]) == [TRIGGER_STATE, TRIGGER_STATE],
-        "humidity_set_before_measuring": 0x72 in writes and 0x74 in writes and writes.index(0x72) <= writes.index(0x74),
+        "humidity_set_before_measuring": 0x72 in writes and 0x74 in writes
+                                        and writes.index(0x72) <= writes.index(0x74),
         "two_8byte_data_bursts": sum(1 for t in after if t[0][0] == 0xF7 and len(t) - 1 == 8) == 2,
         "reset_delay_at_least_2ms": bool(delays) and delays[0] >= 2000,
     }
